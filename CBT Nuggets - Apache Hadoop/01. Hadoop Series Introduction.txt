@@ -1,0 +1,22 @@
+数据的状态
+结构化数据：数据库里的数据，有schema，有模式，有纲要
+半结构化数据：xml html，有tag可以转化成有schema结构化数据
+无结构数据：文档，email
+
+3V
+Volume 数量级
+Velocity 访问速度
+Variety 数据的丰富性
+
+Hadoop
+HDFS：存数据
+MapReduce 分析数据
+
+Hadoop 是用JAVA写的
+所以Hadoop the definitive guide里的例子都是java写的。
+
+Facebook build HIVE：SQL 类似的语句
+PIG：也和SQL类似
+HIVE和PIG在底层还是创建Map Reduce Job
+
+
