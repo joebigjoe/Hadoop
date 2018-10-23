@@ -1,0 +1,45 @@
+Hadoop Core
+HDFS：Hadoop分布式文件系统
+Map Reduce：key-value 然后削减
+YARN: yet another resource negotiator, map reduce 2. 
+学习一下历史吧
+
+Data access：
+PIG：Pig Latin, Pig Runtime.
+HIVE：HIVE QL, 类似SQL
+他们的下层都是在把这些类SQL语句转化成map reduce jobs.
+
+Data Storage：
+HBASE: based on Google Big Table. Run PIG and HIVE natively.
+Cassandra: amazon dynamodb? 都是知识点呀
+NoSQL = not only SQL 
+学习完了这个课程学习一个NoSQL的课程
+大数据一般都是写入一次，读取多次被分析。一般跑脚本会需要较长的时间
+HBASE和Cassandra主要是为了解决大数据数据查询的
+
+Interaction, Visualization，Execution，Development
+Hcatalog: shared schema
+Lucene: full text searching, wild card search
+Hama: BSP[ Bulk Synchronous Parallel] data science data
+Crunch: map reduce pipelines, join and aggregation of data
+
+Data Serialization:
+在传递和存储数据之前，需要序列化，例如：Json
+Avro：genetic 
+Thrift：specific flexible, language neutral
+
+Data Intelligence:
+Drill: deal with nested data
+Mahout：machine learning 
+3C：Collaborative filtering [recommendation], Clustering, Classification
+
+Data integration tools.
+Sqoop: 导出数据到关系数据库，倒入数据到HDFS
+Flume: real time web logging process tools 
+Chukwa: real time web logging process tools
+
+Management, monitoring, orchestration 
+Zookeeper: distributed resource coordinator.  管理中心
+Oozie: work flow, pig，hive，sqoop, 先跑一个再跑下一个，安排顺序
+Ambari：manage cluster. Cool
+
