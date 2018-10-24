@@ -1,0 +1,17 @@
+单机安装Hadoop
+
+Hadoop Mode：
+Standalone：
+Pseudo 
+Fully Distributed
+
+Pre Installation
+SSH server：用来name node 和 data node通信
+Sudo apt-get install 
+JAVA：Hadoop是java写的
+
+详细步骤，参见：install pseudo mode hadoop.txt
+
+
+
+
