@@ -1,0 +1,163 @@
+run a haddop example code 
+
+1. make localdata directory to save the night watch's oath
+	mkdir localdata
+	vim NightWatchOath.txt
+	copy the diolog from here https://awoiaf.westeros.org/index.php/Feature_quote
+	vim :wq save the file
+
+2. copy the file from localdata to HDFS 
+	make a data directory in HDFS: hadoop fs -mkdir data
+	hadoop fs -copyFromLocal NightWatchOath.txt /data
+	you can check the result: hadoop fs -ls /data
+
+3. locate the hadoop-examples.jar
+	sudo updatedb
+	locate *hadoop*examples.jar
+	it is here: /home/aria/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar
+
+4. run the examples with word count
+	hadoop jar /home/aria/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount data/NightWatchOath.txt output
+
+5. then check out the result
+	18/10/24 03:16:04 INFO client.RMProxy: Connecting to ResourceManager at localhost/127.0.0.1:8032
+	18/10/24 03:16:05 INFO input.FileInputFormat: Total input files to process : 1
+	18/10/24 03:16:06 INFO mapreduce.JobSubmitter: number of splits:1
+	18/10/24 03:16:07 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1540365332485_0001
+	18/10/24 03:16:07 INFO impl.YarnClientImpl: Submitted application application_1540365332485_0001
+	18/10/24 03:16:08 INFO mapreduce.Job: The url to track the job: http://aria-HP-ENVY-6-Notebook-PC:8088/proxy/application_1540365332485_0001/
+	18/10/24 03:16:08 INFO mapreduce.Job: Running job: job_1540365332485_0001
+	18/10/24 03:16:19 INFO mapreduce.Job: Job job_1540365332485_0001 running in uber mode : false
+	18/10/24 03:16:19 INFO mapreduce.Job:  map 0% reduce 0%
+	18/10/24 03:16:27 INFO mapreduce.Job:  map 100% reduce 0%
+	18/10/24 03:16:35 INFO mapreduce.Job:  map 100% reduce 100%
+	18/10/24 03:16:37 INFO mapreduce.Job: Job job_1540365332485_0001 completed successfully
+	18/10/24 03:16:37 INFO mapreduce.Job: Counters: 49
+		File System Counters
+			FILE: Number of bytes read=765
+			FILE: Number of bytes written=317245
+			FILE: Number of read operations=0
+			FILE: Number of large read operations=0
+			FILE: Number of write operations=0
+			HDFS: Number of bytes read=623
+			HDFS: Number of bytes written=500
+			HDFS: Number of read operations=6
+			HDFS: Number of large read operations=0
+			HDFS: Number of write operations=2
+		Job Counters 
+			Launched map tasks=1
+			Launched reduce tasks=1
+			Data-local map tasks=1
+			Total time spent by all maps in occupied slots (ms)=5711
+			Total time spent by all reduces in occupied slots (ms)=4908
+			Total time spent by all map tasks (ms)=5711
+			Total time spent by all reduce tasks (ms)=4908
+			Total vcore-milliseconds taken by all map tasks=5711
+			Total vcore-milliseconds taken by all reduce tasks=4908
+			Total megabyte-milliseconds taken by all map tasks=5848064
+			Total megabyte-milliseconds taken by all reduce tasks=5025792
+		Map-Reduce Framework
+			Map input records=1
+			Map output records=103
+			Map output bytes=920
+			Map output materialized bytes=765
+			Input split bytes=115
+			Combine input records=103
+			Combine output records=65
+			Reduce input groups=65
+			Reduce shuffle bytes=765
+			Reduce input records=65
+			Reduce output records=65
+			Spilled Records=130
+			Shuffled Maps =1
+			Failed Shuffles=0
+			Merged Map outputs=1
+			GC time elapsed (ms)=236
+			CPU time spent (ms)=1940
+			Physical memory (bytes) snapshot=439070720
+			Virtual memory (bytes) snapshot=3967299584
+			Total committed heap usage (bytes)=302514176
+		Shuffle Errors
+			BAD_ID=0
+			CONNECTION=0
+			IO_ERROR=0
+			WRONG_LENGTH=0
+			WRONG_MAP=0
+			WRONG_REDUCE=0
+		File Input Format Counters 
+			Bytes Read=508
+		File Output Format Counters 
+			Bytes Written=500
+
+
+6. troubleshooting
+	encountre error: org.apache.hadoop.yarn.exceptions.InvalidAuxServiceException: The auxService:mapreduce_shuffle does not exist
+	root cause: there is a typo on my yarn-site.xml config file.
+	it should be yarn.nodemanager.aux-services, not yarn.nodemanager.aux-service, missed one s.
+	<configuration>
+        <property>
+                <name>yarn.resourcemanager.hostname</name>
+                <value>localhost</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.aux-services</name>
+                <value>mapreduce_shuffle</value>
+        </property>
+	</configuration>
+
+	a. vim change the yarn-site.xml.
+	b. restart all the services.
+		stop-all.sh
+		start-all.sh
+	c. run the command agian.
+
+7. the result is in output/
+	output1/_SUCCESS
+	output1/part-r-00000
+
+	a. copy the file to local: hadoop fs -copyToLocal output1/part-r-00000
+	b. view the file content:
+		vim part-r-00000
+
+		I       7
+		It      1
+		Night   1
+		Night’s 1
+		Watch,  1
+		against 1
+		all     1
+		am      3
+		and     5
+		at      1
+		begins. 1
+		brings  1
+		burns   1
+		children.       1
+		cold,   1
+		come.   1
+		crowns  1
+		darkness.       1
+		dawn,   1
+		death.  1
+		die     1
+		end     1
+		father  1
+		fire    1
+		for     1
+		gathers,        1
+		glory.  1
+		guards  1
+		hold    1
+		honor   1
+		horn    1
+		in      1
+		lands,  1
+		life    1
+		light   1
+		live    1
+		men.    1
+
+
+
+
+

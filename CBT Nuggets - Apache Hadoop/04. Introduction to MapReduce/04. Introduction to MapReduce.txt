@@ -1,0 +1,21 @@
+Map Reduce 
+以前对map reduce 有所了解 所以这个记得笔记较少
+看图片和其他笔记
+
+Jps
+Java runtime process
+
+查看name node
+Localhost:50070
+Utilities Browse File System
+
+默认文件夹是：user和tmp
+这个是hdfs格式化之后就有的，还是自己创建的。
+重新安装，并确定一下。
+
+备份site配置文件
+记录跑wordcount jar的步骤
+
+
+
+
