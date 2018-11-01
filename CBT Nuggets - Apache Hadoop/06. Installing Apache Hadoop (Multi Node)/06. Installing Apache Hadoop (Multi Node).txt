@@ -1,0 +1,81 @@
+https://www.youtube.com/watch?v=-YEcJquYsFo 
+
+设置cluster
+
+对于NameNode
+HDFS – NameNode
+YARN – Resource Manager
+
+对于 DataNode
+HDFS – DataNode
+YARN – Node Manager
+
+过程：
+1.	安装java
+
+2.	设置IP文件 /etc/hosts，确保机器之间可以ping通
+使用虚拟 host-only network，
+name node IP: 192.168.56.101
+设置 /etc/hosts 文件
+192.168.56.102	datanode1 
+192.168.56.103	datanode2
+
+data node 1 IP: 192.168.56.102
+设置 /etc/hosts 文件
+192.168.56.101	namenode
+
+data node 2 IP: 192.168.56.103
+设置 /etc/hosts 文件
+192.168.56.101	namenode
+
+3.	下载安装hadoop
+	下载并解压的某个文件夹
+	设置hadoop的HADOOP_HOME 
+
+4.	设置ssh登录，叫namenode可以顺利登录datanode
+ssh-keygen -t rsa -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+ssh-copy-id ~/.ssh/id_rsa.pub hadoopuser@datanode1
+ssh-copy-id ~/.ssh/id_rsa.pub hadoopuser@datanode2
+
+同样使datanode可以login namenode
+Datanode1
+ssh-keygen -t rsa -f ~/.ssh/id_rsa
+ssh-copy-id ~/.ssh/id_rsa.pub hadoopuser@namenode
+
+	Datanode2
+	ssh-keygen -t rsa -f ~/.ssh/id_rsa
+	ssh-copy-id ~/.ssh/id_rsa.pub hadoopuser@namenode
+
+5.	配置hadoop
+还记得在Pseudo模式下的文件吗？
+在cluster模式下还是配置这些文件。
+只不过要把这些配置文件拷贝到所有的节点上去
+https://www.linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/ 
+
+jetty is bound to 8088
+不要设置yarn.resourcemanager.hostname
+这也许是个瞎猫碰上死耗子的设置，默认的是0.0.0.0，就可以访问 localhost:8088 了
+
+file://${hadoop.tmp.dir}/dfs/name
+hadoop.tmp.dir还是很重要的
+
+其实最基本的配置文件，
+只需要把前面的Pseudo文件做简单修改就可以实现了。
+
+
+https://gitbook.cn/books/5954c9600326c7705af8a92a/index.html 
+改变IP nodename localhost 会有不一样的效果
+所以还是和网络有关
+难道是防火墙？？？？？？
+
+明天一定要解决这个 8088 不能访问的问题
+8088的问题解决了。
+把网络搞清楚！
+在每个/etc/hosts 文件里记录所有节点的IP map
+然后用IP:8088 而不是localhost:8088
+我们已经转战多节点，localhost就不make sense了。
+还有就是默认情况下 127.0.1.1 会绑定我们机器的名称
+将127.0.1.1换成当前机器的IP。然后一切的通信和map reduce job 都不会跑错了。
+OH YEAH！
+

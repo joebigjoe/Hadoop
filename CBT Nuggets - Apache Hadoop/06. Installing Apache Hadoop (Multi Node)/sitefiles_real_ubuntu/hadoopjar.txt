@@ -1,0 +1,3 @@
+hadoop jar /usr/local/hadoop/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount testdata/Oath.txt output
+
+
