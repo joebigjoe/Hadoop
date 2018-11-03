@@ -1,0 +1,14 @@
+start-dfs.sh
+Starting namenodes on [namenode]
+namenode: starting namenode, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/hadoop-hadoopuser-namenode-namenode.out
+datanode3: starting datanode, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/hadoop-hadoopuser-datanode-datanode3.out
+datanode2: starting datanode, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/hadoop-hadoopuser-datanode-datanode2.out
+datanode1: starting datanode, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/hadoop-hadoopuser-datanode-datanode1.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/hadoop-hadoopuser-secondarynamenode-namenode.out
+start-yarn.sh
+starting yarn daemons
+starting resourcemanager, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/yarn-hadoopuser-resourcemanager-namenode.out
+datanode3: starting nodemanager, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/yarn-hadoopuser-nodemanager-datanode3.out
+datanode1: starting nodemanager, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/yarn-hadoopuser-nodemanager-datanode1.out
+datanode2: starting nodemanager, logging to /home/hadoopuser/hadoop/hadoop-2.8.5/logs/yarn-hadoopuser-nodemanager-datanode2.out

@@ -1,0 +1,95 @@
+一代
+Master
+Name node
+Job tracker
+
+Slave
+Data node
+Tasks tracker
+
+HDFS：Name node + Data node
+命令：start-dfs.sh stop-dfs.sh
+MapReduce: Job tracker + Tasks tracker
+第一代里是 start-mapred.sh stop-mapred.sh
+
+二代
+Master
+Name node
+Resource manager
+
+Slave
+Data node
+Node manager
+
+HDFS: Name node + Data node
+命令：start-dfs.sh stop-dfs.sh
+YARN: Resource manager + Node manager，所以Yarn又被成为MapReduce 2
+所以2里边是start-yarn.sh stop-yarn.sh
+
+HDFS  从一到二没什么变化 数据的存储没什么变化
+MapReduce变成了YARN， 处理数据的方式产生了变化
+
+在不同的server或者client上跑jps
+你会看到那些daemon的名字
+
+Damon 达蒙
+Demon 魔鬼
+Daemon 守护进程 马特达蒙是魔鬼
+
+Rack awareness
+
+Namenode 的 master 文件是来配置 secondary node的
+Slave是来配置真正的slave机器的
+
+在Hadoop2里边 我们一般会配置一个standby node。
+作为namenode的实时备份
+以改变namenode是single failurepoint的状态
+在2的文件夹里面，已经没有了masters这个文件
+自己创建.
+
+Hadoop 1 里边配置 secondary namenode
+里边没有standby node的概念。
+
+decommission a node
+core-site.xml
+把它放到dfs.hosts.exclude 指定的文件里
+还有dfs.hosts.include 文件可指定包含的机器
+可以去50070里边看那些decommission的机器
+
+Hadoop dfsadmin -refreshNodes 命令
+Start-balancer.sh
+来均衡data
+
+https://acadgild.com/blog/commissioning-and-decommissioning-of-datanode-in-hadoop
+also difference for Hadoop 1 and 2
+
+加入和删除节点
+一节对于secondary namenode 的设置方式都是不一样的
+所以要学的东西很多呀！
+Hadoop1 编辑masters文件
+Hadoop2 编辑xml文件
+In hdfs-site.xml:
+<property> 
+   <name>dfs.secondary.http.address</name>
+   <value>$secondarynamenode.full.hostname:50090</value>
+   <description>SecondaryNameNodeHostname</description>
+</property>
+
+
+但是先暂停对于hadoop运维的学习
+进入下一章节
+
+当出现错误 google搜索的时候
+注意加入hadoop的版本
+
+
+
+
+
+
+
+
+
+
+
+
