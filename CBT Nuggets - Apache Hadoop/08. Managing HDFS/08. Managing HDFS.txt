@@ -1,0 +1,91 @@
+去哪里找数据
+
+Data sites
+https://www.gutenberg.org 
+FREE EBOOK
+Good for text processing
+
+S3 data 亚马逊公开数据
+https://registry.opendata.aws/ 
+https://github.com/awslabs/open-data-registry
+
+Weather data
+https://www.ncdc.noaa.gov/cdo-web/ 
+不知道怎么下载呀
+
+http://www.infochimps.com/ 
+https://github.com/infochimps-data/infochimps-data
+那些不公开的数据集 去GitHub上找找
+
+Wikipedia 
+https://en.wikipedia.org/wiki/Wikipedia:Database_download 
+这个牛逼了！
+
+https://www.kaggle.com/datasets
+https://www.springboard.com/blog/free-public-data-sets-data-science-project/
+公开数据还是不少的 看你怎么用
+
+Hadoop Client的设置
+与设置Hadoop的master和slave一样，只是不要加入的那个cluster就行
+
+当我们第一次往hdfs里边拷贝东西的时候
+我们需要把创建自己的文件夹
+ 但是如果直接用hadoop fs -mkdir test会报错
+报错信息里可以感到hadoop需要一个以当前账号登录的user为根来创建目录结构
+hdfs://masternode-name:8020/user/hadoopuser
+所以要hadoop fs -mkdir /user/hadoopuser/test
+然后再hadoop fs -ls 就看到了test文件夹
+
+把我们下好的书拷贝到hdfs
+hadoop fs -copyFromLocal /usr/local/hadoop/localdata/war_and_peace.txt test
+hadoop fs -ls test
+就会看到那本书
+
+我们要有自己的目录结构思想把数据存储起来
+然后建立用户，叫不同的用户选择仔细需要的data
+而且把结果可以留在自己的文件夹里
+知道你自己的数据和结果在哪里！
+
+时刻铭记我们的根目录{hadoop.tmp.dir}/dfs
+Data的目录是{hadoop.tmp.dir}/dfs/data
+User的目录是{hadoop.tmp.dir}/dfs/user
+
+也可以做这样创建文件夹
+hadoop fs -mkdir hdfs://masternode-name:8020/data/small
+hadoop fs -mkdir hdfs://masternode-name:8020/data/big
+hadoop fs -mkdir hdfs://masternode-name:8020/data/huge
+hadoop fs -ls hdfs://masternode-name:8020/data
+去50070网站看文件夹结构
+
+CopyFromLocal
+MvFromLocal
+Put
+
+Hadoop dfsadmin -report
+
+Hadoop dfsadmin -safemode enter
+Hadoop dfsadmin -safemode leave
+Safemode 当更新的时候
+
+Hadoop fsdk
+检查健康度
+
+Hadoop 更新过程
+关掉集群
+安装新的hadoop
+Start-dfs.sh -upgrade
+Hadoop dfsadmin -upgrdadeProcess status
+进入safemode
+然后 Hadoop fsck
+如果有问题可以rollback, start-dfs.sh -rollback
+如果没有问题，需要finalize，hadoop dfsadmin -finalizeUpgrade
+
+在小的cluster上先测试
+不要乱搞
+
+RackAwareness
+配置文件
+脚本跑起
+暂时先没有操作
+因为自己的环境很小
+
