@@ -1,0 +1,76 @@
+Trouble Shooting
+
+Logs are your best friend.
+
+Hadoop Log
+dir $HADOOP_HOME
+里边的logs文件件里边有我们跑job的log
+
+Hadoop Data
+{Hadoop.tmp.dir}为我们设置额根节点
+{Hadoop.tmp.dir}/dfs 是文件系统的根节点
+依次有
+{Hadoop.tmp.dir}/dfs/data
+{Hadoop.tmp.dir}/dfs/name
+{Hadoop.tmp.dir}/dfs/namesecondary
+
+每当我们重新格式化NameNode之后
+Datanode的ClusterID需要手动更新，要不然的话 datanode无法启动。这个信息在logs里边，自己去拷贝
+还有一种方法是清空datanode下边的{Hadoop.tmp.dir}的值，这样就会重新分配
+
+每次DataNode更新了config文件之后
+都要推送到Datanode，这个看起来蛮扯淡的
+
+查看datanode的log
+192.168.56.102:50075/logs
+Datanode_ip:50075/logs
+
+如果你的cluster启动都启动不了
+那十有八九是你的配置文件出错了。
+
+如何检查Hadoop corruption: Fsck
+Commission or decommission, 添加node，删减node
+修改配置文件
+
+Default config files and override config files
+
+Distribute copy 
+
+Safe mode, read only hdfs 
+
+优化：
+大部分的优化来自 map reduce 阶段
+修改配置文件，使我们的Hadoop跑的更6
+
+You want your mappers to be finished in 1, 2 minutes. 
+
+Use combiners 在本地就把自己该做的reduce做好
+Use compression 缓解网络间传输的流量！
+
+修改参数来把自己的cluster跑到最快
+这个在没有经验的时候 肯定是短板
+需要后续学习，先跳过
+主要是试验环境 没有办法太好的学习
+
+常用的测试命令：
+hadoopar /usr/local/hadoop/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar teragen 5242880 /data/teragen2
+
+hadoop jar /usr/local/hadoop/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar terasort /data/teragen2 /data/output2
+
+hadoop jar /usr/local/hadoop/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.8.5-tests.jar TestDFSIO -write -nrFiles 10 -fileSize 100
+
+hadoop jar /usr/local/hadoop/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.8.5-tests.jar TestDFSIO -read -nrFiles 10 -fileSize 100
+
+hadoop jar /usr/local/hadoop/hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.8.5-tests.jar TestDFSIO -clean
+
+
+
+
+
+
+
+
+
+
+
+
