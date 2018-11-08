@@ -1,0 +1,51 @@
+MapReduce jobs test.
+https://hadoop.apache.org/docs/r2.8.5/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
+官方网站上的培训 就是最棒的
+先把这个做了
+然后做一个分析excel的例子
+
+在2.8.5上跑java的map reduce需要引入如下文件
+share\hadoop\common       
+share\hadoop\common\lib   
+share\hadoop\mapreduce    
+share\hadoop\mapreduce\lib
+share\hadoop\yarn         
+share\hadoop\yarn\lib  
+也就是说把 common，MapReduce，yarn下边的全搞进去
+
+分析excel
+先把excel转换成csv文件
+然后再map reduce
+
+Eclipse生成jar文件
+To create a new JAR file in the workbench:
+1.	In the Package Explorer, you can optionally pre-select one or more Java elements to export. (These will be automatically selected in the   JAR Package Specificationwizard page, described in Step 4.)
+2.	Either from the context menu or from the menu bar's File menu, select Export.
+3.	Expand the Java node and select JAR file. Click Next.
+4.	In the JAR File Specification page, select the resources that you want to export in the Select the resources to export field.
+5.	Select the appropriate checkbox to specify whether you want to Export generated class files and resources or Export Java source files and resources. Note: Selected resources are exported in both cases.
+6.	In the Select the export destination field, either type or click Browse to select a location for the JAR file.
+7.	Select or clear the Compress the contents of the JAR file checkbox.
+8.	Select or clear the Overwrite existing files without warning checkbox. If you clear this checkbox, then you will be prompted to confirm the replacement of each file that will be overwritten.
+9.	Note: The overwrite option is applied when writing the JAR file, the JAR description, and the manifest file.
+10.	You have two options:
+o	Click Finish to create the JAR file immediately.
+o	Click Next to use the JAR Packaging Options page to set advanced options, create a JAR description, or change the default manifest.
+
+Java的编程和C#真的没什么区别
+1.	创建项目的时候需要选择java的版本，类似于C# .net的版本
+2.	当你要引入其他人的代码时，就需要引入其他人的包，java是Add external jar文件，C#是引入其他的DLL
+3.	当你代码做完，要build的时候，java选择export的格式，C#在创建项目的时候，输出就定了，是exe还DLL
+4.	取决于自己对系统包和开源包的熟悉度，来决定自己代码的好坏。
+
+MapReduce的时候
+Map
+可以输出一些中间结果来反馈自己再分析string时对不对。
+正因为有了框架，我们能做的操作大部分都是分析传入的那行数据。
+大多集中在字符串分析
+
+Reduce
+往往是一些基本的数学操作
+
+所以整个编程模型并不是很难
+
