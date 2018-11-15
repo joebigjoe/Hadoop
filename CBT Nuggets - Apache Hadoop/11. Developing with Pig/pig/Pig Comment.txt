@@ -1,0 +1,11 @@
+when store pig data.
+we can use a new PigStorage(':').
+in the movie data, the default file is in scv format.
+which means it is seperated by comma.
+we can change it to other.
+store movies INTO 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/notcomma.txt' USING PigStorage(':', '-schema');
+this will generate the .pig_schema file, which we can be used in other files.
+copy .pig_schema to other fodlers, it will become the default schema for that folder when we load data files.
+
+
+the result of dump is stored in the temp folders in the HDFS.

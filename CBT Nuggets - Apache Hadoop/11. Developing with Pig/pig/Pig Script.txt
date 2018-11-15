@@ -1,0 +1,51 @@
+movies = LOAD 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/movies.csv' USING PigStorage(',') AS (movieId:int, title:chararray, genres:chararray);
+dump movies;
+describe movies;
+store movies INTO 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/notcomma.txt' USING PigStorage(':', '-schema');
+moviesFiletered = FILTER movies BY movieId < 10;
+dump moviesFiletered;
+
+
+ratings = LOAD 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/ratings.csv' USING PigStorage(',') AS (userId:int, movieId:int, rating:int, timestamp:chararray);
+dump ratings;
+describe ratings;
+
+ratingsFiltered = FILTER ratings BY userId < 10;
+dump ratingsFiltered;
+
+ratingsTransformed = FOREACH ratingsFiltered GENERATE userId, movieId, rating, ToDate((long)timestamp) as releasedDate;
+describe ratingsTransformed
+ratingsTransformed: {userId: int,movieId: int,rating: int,releasedDate: datetime}
+
+ratingsGrouped = GROUP ratingsTransformed BY userId;
+dump ratingsGrouped;
+[This is what looks like adter a group]
+(9,{(9,5378,3,1970-01-12T21:10:56.811-05:00),(9,5445,4,1970-01-12T21:10:56.792-05:00),(9,5447,4,1970-01-12T21:10:56.836-05:00),(9,5451,4,1970-01-12T21:10:56.836-05:00),(9,5481,5,1970-01-12T21:10:56.836-05:00),(9,5507,1,1970-01-12T21:10:56.836-05:00),(9,5841,1,1970-01-12T21:10:57.318-05:00),(9,5843,3,1970-01-12T21:10:57.269-05:00),(9,5872,3,1970-01-12T21:10:56.962-05:00),(9,5890,4,1970-01-12T21:10:56.792-05:00),(9,5891,1,1970-01-12T21:10:57.318-05:00),(9,5893,4,1970-01-12T21:10:57.144-05:00),(9,5902,5,1970-01-12T21:10:56.934-05:00),(9,5952,5,1970-01-12T21:10:56.908-05:00),(9,5956,4,1970-01-12T21:10:56.962-05:00),(9,5962,1,1970-01-12T21:10:57.338-05:00),(9,5965,4,1970-01-12T21:10:57.185-05:00),(9,5988,2,1970-01-12T21:10:57.269-05:00),(9,6001,4,1970-01-12T21:10:57.072-05:00),(9,6044,2,1970-01-12T21:10:57.285-05:00),(9,2300,5,1970-01-12T21:10:57.072-05:00),(9,2023,3,1970-01-12T21:10:56.650-05:00),(9,2012,4,1970-01-12T21:10:57.237-05:00),(9,2011,3,1970-01-12T21:10:57.200-05:00),(9,1987,2,1970-01-12T21:10:56.716-05:00),(9,1674,4,1970-01-12T21:10:56.650-05:00),(9,1270,5,1970-01-12T21:10:57.088-05:00),(9,1198,5,1970-01-12T21:10:56.716-05:00),(9,1095,4,1970-01-12T21:10:57.088-05:00),(9,1037,2,1970-01-12T21:10:56.650-05:00),(9,923,5,1970-01-12T21:10:57.026-05:00),(9,922,4,1970-01-12T21:10:57.026-05:00),(9,627,3,1970-01-12T21:10:57.102-05:00),(9,371,3,1970-01-12T21:10:56.716-05:00),(9,223,4,1970-01-12T21:10:56.650-05:00),(9,187,3,1970-01-12T21:10:57.119-05:00),(9,41,3,1970-01-12T21:10:56.650-05:00),(9,2877,3,1970-01-12T21:10:57.221-05:00),(9,2901,2,1970-01-12T21:10:56.716-05:00),(9,3173,2,1970-01-12T21:10:56.650-05:00),(9,3328,3,1970-01-12T21:10:56.650-05:00),(9,3735,3,1970-01-12T21:10:57.051-05:00),(9,4131,1,1970-01-12T21:10:57.221-05:00),(9,4558,1,1970-01-12T21:10:56.650-05:00),(9,4993,5,1970-01-12T21:10:57.051-05:00),(9,5218,4,1970-01-12T21:10:56.811-05:00)})
+describe ratingsGrouped;
+atingsGrouped: {group: int,ratingsTransformed: {(userId: int,movieId: int,rating: int,releasedDate: datetime)}}
+
+ratingsAggragated = FOREACH ratingsGrouped GENERATE group, AVG(ratingsTransformed.rating) as ratingAVG;
+dump ratingsAggragated;
+(1,4.366379310344827)
+(2,3.793103448275862)
+(3,2.1025641025641026)
+(4,3.5555555555555554)
+(5,3.6363636363636362)
+(6,3.4936305732484074)
+(7,2.9934210526315788)
+(8,3.574468085106383)
+(9,3.260869565217391)
+
+describe ratingsAggragated;
+ratingsAggragated: {group: int,ratingAVG: double}
+
+ratingsOrdered = ORDER ratingsAggragated by group DESC;
+(9,3.260869565217391)
+(8,3.574468085106383)
+(7,2.9934210526315788)
+(6,3.4936305732484074)
+(5,3.6363636363636362)
+(4,3.5555555555555554)
+(3,2.1025641025641026)
+(2,3.793103448275862)
+(1,4.366379310344827)
