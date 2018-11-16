@@ -1,0 +1,30 @@
+SQL like
+Similar in nature, different in style
+
+PIG:
+High-level data flow scripting language
+
+Piggybank
+https://cwiki.apache.org/confluence/display/PIG/PiggyBank 
+user defined functions
+是一个jar文件
+
+Pig使用
+默认：pig = pig -x mapreduce
+Launch pig in mapreduce mode 
+
+注意：namenode重启之后，一定要重启
+Start-dfs.sh
+Start-yarn.sh
+Mr-jobhistory-daemon-sh start historyserver
+
+在hadoop 健康的跑起来的时候，pig才能跑起来
+诸如：ls这类命令才好使
+
+Grunt：有点类似于mysql的命令行
+https://www.ibm.com/developerworks/cn/linux/l-apachepigdataquery/index.html 
+IBM的学习网站蛮好的
+
+每一个pig语句单独执行，都会翻译成一个map reduce的job。
+这样是不是会浪费时间？
+还是整个脚本执行的时候会有优化？
