@@ -28,3 +28,15 @@ IBM的学习网站蛮好的
 每一个pig语句单独执行，都会翻译成一个map reduce的job。
 这样是不是会浪费时间？
 还是整个脚本执行的时候会有优化？
+
+Illustrate
+Describe
+Explain 
+
+在pig的跑的结果里，找那些UDF里边throw的exception.
+这样就可以更好的找到UDF错误原因。
+
+当有exception的时候，
+还是要找到那行有exception的数据，
+分析不同点。
+所有的东西都是类似的。
