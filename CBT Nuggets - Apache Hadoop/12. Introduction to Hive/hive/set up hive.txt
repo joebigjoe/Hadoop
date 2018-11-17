@@ -1,0 +1,41 @@
+set up hive 
+https://www.tutorialspoint.com/hive/hive_installation.htm
+https://stackoverflow.com/questions/35655306/hive-installation-issues-hive-metastore-database-is-not-initialized
+
+1 download hive from the official site.
+	https://hive.apache.org/downloads.html
+
+2 unzip and then save it to /usr/local/hive
+
+3 edit /etc/environment, set the enviroment value $HIVE_HOME=/usr/local/hive, add /usr/local/hive/bin to $PATH
+
+4 $HIVE_HOME/conf/hive-env.sh, set HADOOP_HOME="/usr/local/hadoop/hadoop-2.8.5", this may not needed.
+
+5 change the hive-site.xml, under $HIVE_HOME/conf/.
+we copy the ones we need to the $HIVE_HOME/conf/.
+
+6 go to /usr/local/hive, and initialize the Schema
+	chematool -dbType derby -initSchema
+
+7 run hive
+
+when hadoop is down,
+you will see the hive exception.
+this means the hive setup is correct.
+but the hdfs is not ready.
+Exception in thread "main" java.lang.RuntimeException: java.net.ConnectException: Call From masternode-name/192.168.1.105 to masternode-name:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused
+
+then go to the hdfs:///usr/local/hive/warehouse/movielens.db
+this is the loaded DB in HPFS.
+usr/local/hive/warehouse is the path in hive-site.xml.
+<name>hive.metastore.warehouse.dir</name>
+<value>/usr/local/hive/warehouse</value>
+only when play with it the hard way.
+then we know what is what.
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+HIVE
+HIVEQL
+
+HIVE
+SQL for Hadoop
+1.	Install HIVE
+2.	Create database
+3.	Create table in that database
+4.	We load data to the table
+5.	Then we query the data for that table
+
+Partitions 
+将数据分为更小的文件
+
+HIVE 只读不写 OLAP, Schema R [Read]
+RMDBS 有读有写 OLTP/OLAP, Schema W [Write]
+
+http://datawarehouse4u.info/OLTP-vs-OLAP.html
+We can divide IT systems into transactional (OLTP) and analytical (OLAP). In general we can assume that OLTP systems provide source data to data warehouses, whereas OLAP systems help to analyse it.
+
+- OLTP (On-line Transaction Processing) is characterized by a large number of short on-line transactions (INSERT, UPDATE, DELETE). The main emphasis for OLTP systems is put on very fast query processing, maintaining data integrity in multi-access environments and an effectiveness measured by number of transactions per second. In OLTP database there is detailed and current data, and schema used to store transactional databases is the entity model (usually 3NF). 
+
+- OLAP (On-line Analytical Processing) is characterized by relatively low volume of transactions. Queries are often very complex and involve aggregations. For OLAP systems a response time is an effectiveness measure. OLAP applications are widely used by Data Mining techniques. In OLAP database there is aggregated, historical data, stored in multi-dimensional schemas (usually star schema). 
+
+HIVE tools
+1.	HIVE Shell
+2.	HIVE WebUI
+3.	HIVE servers (thrift), we open it to JDBC, ODBC…. And more 
+4.	Thrift API to access data
+
+
