@@ -1,0 +1,30 @@
+-- set dynamic partition
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+-- create database
+create database IF NOT EXISTS movielens;
+
+-- choose the database
+use movielens;
+
+-- create movies table
+create external table IF NOT EXISTS movies(movieId int, title int, genres string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+-- load movies data
+LOAD DATA INPATH 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/movies.csv' INTO TABLE movies;
+
+-- create a table for ratings
+create external table IF NOT EXISTS ratings(userId int, movieId int, rating string, timestamp_ string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+-- load movies data
+LOAD DATA INPATH 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/ratings.csv' INTO TABLE ratings;
+
+--  hive -f ~/Desktop/hive_movielens_test.hive
+

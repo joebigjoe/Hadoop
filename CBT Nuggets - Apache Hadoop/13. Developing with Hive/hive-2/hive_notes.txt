@@ -1,0 +1,12 @@
+hive> select s.userid, m.title, s.rating from
+    > movies as m inner join ratings as s on m.movieid = s.movieid
+    > where s.userid=1;
+Query ID = hadoopuser_20181117064510_177cd825-ec16-4a36-a115-06bec633b173
+Total jobs = 1
+
+this will became a map reduce job.
+
+hadoop fs -copyFromLocal ./hadoop/localmoviedata/ml-latest-small/movies.csv moviedata/ml-latest-small
+hadoop fs -copyFromLocal ./hadoop/localmoviedata/ml-latest-small/ratings.csv moviedata/ml-latest-small
+
+

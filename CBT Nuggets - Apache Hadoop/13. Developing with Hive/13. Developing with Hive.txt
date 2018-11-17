@@ -1,0 +1,55 @@
+13. Developing with Hive 
+
+当我们使用LOAD DATA INPATH 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/movies.csv' INTO TABLE movies;
+Movies.csv 文件会被剪切到 hive的文件夹下边
+如果我们dorp movies; movies.csv文件也会被删除掉。
+
+所有我们一般使用external load，
+这样的话不会破坏HDFS里的原始文件
+但是hive还是会move文件到hive自己的文件夹
+所以在生成环境中，把hive的目录，定位于文件的存储目录。
+也就是说这个hive.metastore.warehouse.dir的目录设为我们文件的存储目录。
+这样的话，就不会移动文件，或者说只在同一个文件夹里移动文件
+这样data就不会被搞坏了。
+<name>hive.metastore.warehouse.dir</name>
+<value>/usr/local/hive/warehouse</value>
+
+这个通过在脚本里设置LOCATION来实现。
+
+自动Partition
+Set hive.exec.dynamic.partitiion=true
+Set hive.exec.dynamic.partitiion.mode=nonstrict
+自行的partition要根据在query中的输入来决定。
+很多的坑呀！
+
+非自动的partition要分析文件名吗？
+Partition的列并不存在与数据表里边
+是我们在数据表之外，再次做的一些逻辑处理
+有多个文件
+把文件分组？
+
+这个partition和pig的split很像。
+他们背后都是转化成一个东西。
+从底层学起，越来越明白。
+
+Load local data 不会剪切文件
+LOAD LOCAL DATA INPATH ‘/user/hadoopuser/moviedata/ml-latest-small/movies.csv' INTO TABLE movies;
+
+Insert 用于在不同的HIVE DB间移动数据。
+
+hive和pig都有专门的一本书
+先把基本的概念搞起
+然后细看
+
+VIEW 和 INDEX
+感觉关系数据库有的东西
+HIVE都有。
+建索引需要很长时间
+查看view也是转化成一个map reduce job.
+
+
+HIVE的命令行和MYSQL的命令行很类似
+所以看着很眼熟
+https://www.cnblogs.com/bluecobra/archive/2012/01/11/2318922.html
+
+

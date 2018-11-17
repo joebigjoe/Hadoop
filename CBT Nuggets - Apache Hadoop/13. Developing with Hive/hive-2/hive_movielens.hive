@@ -1,0 +1,33 @@
+-- set dynamic partition
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+-- create database
+create database IF NOT EXISTS movielens;
+
+-- choose the database
+use movielens;
+
+-- create a partitionized table ratingsbyuser_staging
+create external table IF NOT EXISTS ratingsbyuser_staging(userId int, movieId int, rating string, timestamp_ string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+-- load data
+--LOAD DATA INPATH 'hdfs:/usr/local/hive/warehouse/movielens.db/ratingsbyuser_staging/ratings.csv' INTO TABLE ratingsbyuser_staging;
+LOAD DATA INPATH 'hdfs:/user/hadoopuser/moviedata/ml-latest-small/ratings.csv' INTO TABLE ratingsbyuser_staging;
+
+-- create a partitionized table ratingsbyuser_prod
+create external table IF NOT EXISTS ratingsbyuser_prod(userId int, movieId int, rating string, timestamp_ string)
+PARTITIONED BY (rating_ string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n';
+
+-- get the data from ratingsbyuser_staging then insert it into ratingsbyuser_prod.
+INSERT OVERWRITE TABLE ratingsbyuser_prod PARTITION(rating_)
+select userId, movieId, rating, timestamp_, rating as rating_ from ratingsbyuser_staging;
+
+-- query the data you wanted 
+select * from ratingsbyuser_prod where rating_='5.0';
