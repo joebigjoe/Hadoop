@@ -1,0 +1,17 @@
+basic hbase command:
+
+create 'htest', 'cf'
+
+put 'htest','r1','cf:c1','v1'
+put 'htest','r2','cf:c2','v2'
+put 'htest','r3','cf:c3','v3'
+
+scan 'htest'
+
+get 'htest', 'r1'
+
+delete 'htest', 'r3', 'cf:c3'
+
+disable 'htest'
+
+drop 'htest'

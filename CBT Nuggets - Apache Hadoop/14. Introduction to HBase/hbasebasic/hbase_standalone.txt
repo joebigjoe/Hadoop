@@ -1,0 +1,14 @@
+/usr/local/hbase-2.1.1/zookeeperdata
+
+http://192.168.1.100:16010
+
+1. install java
+2. install hbase
+3. config the standalone mode: http://hbase.apache.org/book.html#quickstart
+4. start-hbase.sh
+5. jps
+6. check http://192.168.1.100:16010 to see the status
+7. do test
+8. stop-hbase.sh 
+
+

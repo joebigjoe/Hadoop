@@ -1,0 +1,42 @@
+ROW oriented 
+Column oriented
+
+Hive pig MapReduce 都是批量的处理书籍
+
+HBase用来读取一条数据
+
+HBase的配置和设置与Hadoop蛮像的
+
+HBASE
+Distributed column oriented database on top of Hadoop/hdfs
+
+行存取，列存取
+一般情况下一个列存储在单一的硬盘上
+所以相加等运算非常快
+而且压缩数据的效果很好
+
+Wide: millions of columns and billions of rows
+
+HBase
+读取数以亿计的数据里的一条记录
+
+HDFS
+批量的分析一大堆的书籍
+
+Case study： Facebook’s social inbox
+It is implemented by HBase
+
+HBASE Architecture:
+HBASE Master
+HBASE Regional Server
+Zookeeper
+Client 
+
+建立一个完成的Hadoop体系，需要多少台机器？
+
+Column Family：
+一组列的集合
+
+
+
+
