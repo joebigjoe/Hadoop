@@ -1,0 +1,22 @@
+Setup HBase using HDFS
+
+https://medium.com/@yzhong.cs/hbase-installation-step-by-step-guide-cb73381a7a4c
+https://my.oschina.net/u/3267960/blog/886239
+
+开始使用的最新的版本2.1.1,
+在Pseudo-Distributed mode 总是出错
+最后换成了2.0.2 就成功了。
+我装的jdk是 openjdk-8-jdk。
+所以说开源系统的兼容性也是需要考虑的。
+说白了还是比较怂，没有到可以看源码的级别。
+
+HBase Version		JDK 7		JDK 8		JDK 9		JDK 10
+2.0			Not Supported	yes		Not Supported	Not Supported
+1.3			yes		yes		Not Supported	Not Supported
+1.2			yes		yes		Not Supported	Not Supported
+
+还有就是在安装了HDFS的机器上跑。
+需要研究下一个正常的hadoop ecosystem 需要怎样配置起来。
+
+
+
