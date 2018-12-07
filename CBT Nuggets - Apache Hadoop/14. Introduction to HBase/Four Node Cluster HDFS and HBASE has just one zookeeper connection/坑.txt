@@ -1,0 +1,54 @@
+HBASE 
+将HDFS的master node与HBASE的master 不放在同一个节点
+但是还是将HBASE架在HDFS上
+HBASE的master 只与 HDFS 的master 通过 zookeeper交流。
+HBASE的master 不与 HDFS 的datanode 交流。
+HBASE有自己的master和region。
+
+节点1：masternode-name IP：192.168.1.105
+注释：hdfs的name node
+
+节点2： datanode1 IP：192.168.1.102
+注释：Hdfs的 data node
+
+节点3：hbasemaster hbase的master node
+注释：hbase的master server IP: 192.168.1.101
+
+节点3：hbaseregion hbase的region node
+注释：hbase的master server IP: 192.168.1.100
+
+第一次配置还是照搬官方文档的内容，之后再自由发挥：
+Node Name	Master			ZooKeeper	RegionServer
+masternode-name	No			yes		No
+datanode1	No			No		No
+hbasemaster	yes			yes		No
+hbaseregion	yes[backup master]	yes		yes
+
+Clean Environment
+先stop-hdfs.sh 来关闭所有启动的服务
+在删除所有的zookeeper文件
+在HDFS里删除上次试验创建的 /hbase 目录
+
+1.	修改配置文件，使情况与我们的列表相同
+主要是 hbase.site.xml , backup-masters和 regionservers
+
+把hbasemaster的ssh拷贝到 masternode-name 和hbaseregion, 此时的datanode1已经与hbase没有任何关系
+使其在start-hbase.sh的时候，可以顺利登录的那些机器
+
+2.	Start-hbase.sh 启动所有的服务
+
+3.	使用 jps 查看那些启动的进程
+
+在masternode-name需要开启一个zookeeper
+如果不开的话， 会有lease renew error。
+Seems make sense to 在masternode-name需要开启一个zookeeper
+
+以后的试验都在这个环境下运行
+对于hbase的环境搭建学习到此暂停。
+开始学习其他的下边的内容。
+
+
+
+
+
+
