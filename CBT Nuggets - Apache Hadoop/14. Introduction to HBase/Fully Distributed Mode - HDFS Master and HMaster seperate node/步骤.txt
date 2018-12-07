@@ -1,0 +1,38 @@
+HBASE 
+将HDFS的master node与HBASE的master 不放在同一个节点
+但是还是将HBASE架在HDFS上
+
+节点1：masternode-name IP：192.168.1.105
+注释：hdfs的name node
+
+节点2： datanode1 IP：192.168.1.102
+注释：Hdfs的 data node， hbase的backup master node
+
+节点3：hbasemaster hbase的master node
+注释：hbase的region server IP: 192.168.1.101
+所有的上边都要开启Zookeeper
+
+第一次配置还是照搬官方文档的内容，之后再自由发挥：
+Node Name	Master	ZooKeeper	RegionServer
+masternode-name	No	yes	no
+datanode1	backup	yes	yes
+hbasemaster	yes	yes	no
+
+Clean Environment
+先stop-hdfs.sh 来关闭所有启动的服务
+在删除所有的zookeeper文件
+在HDFS里删除上次试验创建的 /hbase 目录
+
+1.	修改配置文件，使情况与我们的列表相同
+主要是 hbase.site.xml 和 regionservers
+
+2.	把hbasemaster的ssh拷贝到 masternode-name 和datanode1
+使其在start-hbase.sh的时候，可以顺利登录的那些机器
+
+3.	Start-hbase.sh 启动所有的服务
+
+4.	使用 jps 查看那些启动的进程
+
+
+
+
