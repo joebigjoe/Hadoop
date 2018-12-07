@@ -1,0 +1,50 @@
+HBASE 自己就是一个no-SQL数据库
+和Hadoop天生共存
+Hadoop/HDFS Integration: HBase supports HDFS out of the box as its distributed file system.
+
+先配置一个HBASE master node和HDFS master node在一起的HBASE cluster
+节点1：masternode-name IP：192.168.1.105
+注释：hdfs的name node， hbase的master node
+节点2： datanode1 IP：192.168.1.102
+注释：Hdfs的 data node， hbase的backup master node
+节点3：hbasemaster 这个名字有点奇怪，将在把hdfs的name node与hbase的master node分开的时候make sense
+注释：hbase的region server IP: 192.168.1.101
+所有的上边都要开启Zookeeper
+
+第一次配置还是照搬官方文档的内容，之后再自由发挥：
+Node Name	Master	ZooKeeper	RegionServer
+masternode-name	yes	yes	no
+datanode1	backup	yes	yes
+hbasemaster	no	yes	yes
+
+把hosts文件都设置好
+把ssh登录都设置好
+
+真实机器上的时间一定要一致
+要不然会出现ClockOutOfSyncException
+因此会造成HRegionServer的启动失败
+
+调节系统的时间一致后，重启机器，在stop-hbase.sh, 再start-hbase.sh 之后，就一切正常了。
+
+时间问题解决后，又遇到了HMaster不能启动的问题。
+Stackoverflow上说要清空zookeeper的本地文件夹。
+最终修复了我的问题。
+怀疑是做实验的时候，一个接一个。
+上次试验的脏数据没有被去除。
+
+https://stackoverflow.com/questions/17038957/org-apache-hadoop-hbase-pleaseholdexception-master-is-initializing
+
+
+stop Zookeeper
+	stop-hbase.sh
+
+wipe the Zookeeper data directory
+	rm -rf Zookeeper
+	mkdir Zookeeper
+
+restart it
+	start-hbase.sh
+
+
+
+
