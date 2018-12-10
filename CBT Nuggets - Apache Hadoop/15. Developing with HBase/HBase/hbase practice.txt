@@ -1,0 +1,18 @@
+create 'movies', 'movieInfo'
+
+import date using pig
+
+then scan the table for data
+scan 'movies'
+
+list the database
+list
+
+describe the database
+describe database
+
+hbase-daemon.sh start rest
+curl http://hbasemaster:8080
+http://localhost:8080/movies/99899/movieInfo:movieId
+
+

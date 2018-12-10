@@ -1,0 +1,25 @@
+对于HBASE的data操作一般分为两部分
+1.	Loading HBASE，怎么把hdfs里的数据搞到HBASE
+也就是说我们可以把HDFS里的数据导入到HBASE里边供别人访问
+我的理解应该是那些我们分析出来的结果供别人访问
+
+2.	Access HBASE，如何访问HBASE里边的数据
+至于访问的时候使用什么工具，选择就比较多样化了
+HBASE可以直接开启某些服务，叫客户端可以REST访问数据
+
+Why the region server is dead?
+Time sync issue
+
+Run pig 跑错了的话
+查看log很有用
+
+做了很久的试验
+还是没有达到我想要的结果
+继续向前学习
+HBASE和Spark会单独开个课程学习
+
+把hbase的信息作为REST客户端来访问
+hbase-daemon.sh start rest
+curl http://hbasemaster:8080
+http://localhost:8080/movies/99899/movieInfo:movieId
+
