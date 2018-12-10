@@ -23,3 +23,5 @@ hbase-daemon.sh start rest
 curl http://hbasemaster:8080
 http://localhost:8080/movies/99899/movieInfo:movieId
 
+a link:
+https://axsauze.github.io/hadoop-overview/section-6/6-4.html
