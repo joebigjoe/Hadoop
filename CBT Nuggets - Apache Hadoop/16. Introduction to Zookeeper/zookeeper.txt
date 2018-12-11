@@ -1,0 +1,25 @@
+/usr/local/zookeeper-3.4.12/data
+
+simple command
+
+1 connect
+	zkCli.sh -sever masternode-name:2181
+
+2 help
+	help
+
+3 ls /
+
+4 create a node with some data
+	create /mynode /somedata
+
+5 get /mynode
+
+6 update the node data
+	set /mynode /somenewdata
+
+7 get /mynode
+
+8 delete /mynode
+
+9 ls /
