@@ -1,0 +1,43 @@
+Install mysql in ubuntu
+https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
+
+this is a very good step by step tutorial
+
+https://stackoverflow.com/questions/33991228/what-is-the-default-root-pasword-for-mysql-5-7/50305285#50305285
+change the root password
+
+
+sudo cat /etc/mysql/debian.cnf 
+# Automatically generated for Debian scripts. DO NOT TOUCH!
+[client]
+host     = localhost
+user     = debian-sys-maint
+password = gNHlY00axX3QXPF2
+socket   = /var/run/mysqld/mysqld.sock
+[mysql_upgrade]
+host     = localhost
+user     = debian-sys-maint
+password = gNHlY00axX3QXPF2
+socket   = /var/run/mysqld/mysqld.sock
+
+https://stackoverflow.com/questions/16556497/how-to-reset-or-change-the-mysql-root-password
+reboot ubuntu will do the final trick.
+
+mysql -u root -p hadoop@123
+
+show databases;
+
+create database movies;
+
+use movies;
+
+how to make the mysql be accessed not just by localhost
+https://stackoverflow.com/questions/15663001/remote-connections-mysql-ubuntu
+
+takes me 1 whole day to find it.
+
+about the ubuntu firewall
+https://help.ubuntu.com/lts/serverguide/firewall.html.en
+
+
+

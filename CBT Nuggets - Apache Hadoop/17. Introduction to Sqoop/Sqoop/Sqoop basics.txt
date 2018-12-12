@@ -1,0 +1,24 @@
+Sqoop basics
+
+0 sqoop-env-template 里的环境变量都得设置成那些组件的安装路径
+
+1. sqoop help
+
+2. sqoop list-databases
+	sqoop list-databases --connect "jdbc:mysql://localhost" --username root --password hadoop@123
+
+3. sqoop list tables
+	sqoop list-tables --connect "jdbc:mysql://localhost/imdb" --username root --password hadoop@123
+
+4. sqoop export data
+	the direction is to hdfs. export from hdfs
+	create the table
+	create table movies (id int, movieName varchar(200), movieGenre varchar(200), primary key(id));
+
+	export the data to mysql db:
+	sqoop export --connect "jdbc:mysql://masternode-name:3306/imdb" --username root --password hadoop@123 --table movies --export-dir ml-latest/best_for_now/part-m-00000 --input-fields-terminated-by '\t'
+
+5. sqoop import data
+	the direction is to hdfs. import to hdfs
+	sqoop import --connect "jdbc:mysql://masternode-name:3306/imdb" --username root --password hadoop@123 --table ratings --target-dir sqoop/imported
+

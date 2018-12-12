@@ -1,0 +1,47 @@
+http://sqoop.apache.org/
+
+SQL + Hadoop
+所以是关系数据库和Hadoop之间数据传换的工具
+Moving data between systems
+
+https://stackoverflow.com/questions/15663001/remote-connections-mysql-ubuntu
+如何教mysql可以被除了localhost和127.0.0.1的ip访问
+安装后默认的bind-address是127.0.0.1
+所以那些不需要与其他系统通信的操作都是可以的。
+例如 mysql -h localhost -u root –p 是可以的
+但是只要把IP换成本机的ip就会出错。
+例如 mysql -h 192.168.1.105 -u root –p 是可以的
+
+
+To expose MySQL to anything other than localhost you will have to have the following line
+For mysql version 5.6 and below
+uncommented in /etc/mysql/my.cnf and assigned to your computers IP address and not loopback
+
+For mysql version 5.7 and above
+注意版本也很重要，改了半天，改了5.6的地址。
+最后也是没起作用的。
+uncommented in /etc/mysql/mysql.conf.d/mysqld.cnf and assigned to your computers IP address and not loopback
+#Replace xxx with your IP Address 
+bind-address        = xxx.xxx.xxx.xxx
+Or add a bind-address = 0.0.0.0 if you don't want to specify the IP
+Then stop and restart MySQL with the new my.cnf entry. Once running go to the terminal and enter the following command.
+lsof -i -P | grep :3306
+That should come back something like this with your actual IP in the xxx's
+mysqld  1046  mysql  10u  IPv4  5203  0t0  TCP  xxx.xxx.xxx.xxx:3306 (LISTEN)
+If the above statement returns correctly you will then be able to accept remote users. However for a remote user to connect with the correct priveleges you need to have that user created in both the localhost and '%' as in.
+对于% 的赋予权限。
+默认的也都是localhost
+需要在权限上边也放开
+
+CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypass';
+CREATE USER 'myuser'@'%' IDENTIFIED BY 'mypass';
+then,
+GRANT ALL ON *.* TO 'myuser'@'localhost';
+GRANT ALL ON *.* TO 'myuser'@'%';
+and finally,
+FLUSH PRIVILEGES; 
+EXIT;
+If you don't have the same user created as above, when you logon locally you may inherit base localhost privileges and have access issues. If you want to restrict the access myuser has then you would need to read up on the GRANT statement syntax HERE If you get through all this and still have issues post some additional error output and the my.cnf appropriate lines.
+NOTE: If lsof does not return or is not found you can install it HERE based on your Linux distribution. You do not need lsof to make things work, but it is extremely handy when things are not working as expected.
+shareimprove this answer
+
