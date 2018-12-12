@@ -1,0 +1,10 @@
+亚马逊自己的map reduce
+Amazon Elastic MapReduce (Amazon EMR)
+
+轻松运行和扩展 Apache Spark、Hadoop、HBase、Presto、Hive 以及其他大数据框架
+https://aws.amazon.com/cn/emr/
+
+也是介绍性的文章
+
+进入亚马逊的界面玩一下
+

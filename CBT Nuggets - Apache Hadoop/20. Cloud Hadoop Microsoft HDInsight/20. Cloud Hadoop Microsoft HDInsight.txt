@@ -1,0 +1,15 @@
+所有的大公司都有自己的大数据处理平台
+这个是介绍微软的
+
+Azure 是微软的云平台
+
+每个大公司的都有一个technolgy stack
+
+HDInsight 微软的大数据平台
+
+今下来看 HBASE细节 nonSQL
+看一下SPARK的细节
+学习一下AWS的继承知识
+仔细看一个Java教程
+把movielens的数据仔细分析一下
+

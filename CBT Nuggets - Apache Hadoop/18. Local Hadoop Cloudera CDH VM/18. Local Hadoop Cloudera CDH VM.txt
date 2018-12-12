@@ -1,0 +1,20 @@
+介绍Hadoop Cloudera CDH VM
+
+一个虚拟机
+https://www.cloudera.com/
+https://www.cloudera.com/downloads/quickstart_vms/5-13.html
+
+类似于Hadoop的继承环境
+不用一个一个的安装组件
+它已经都安装配置好
+你可以直接使用
+而且有统一的管理网站
+但是自己安装和解决问题的过程也是蛮好的
+
+另外一个类似的东西叫hortonworks
+https://hortonworks.com/
+big man 他们给我推荐的就是这个继承环境
+
+他们也有自己的虚拟机继承环境
+https://hortonworks.com/downloads/#sandbox 
+
