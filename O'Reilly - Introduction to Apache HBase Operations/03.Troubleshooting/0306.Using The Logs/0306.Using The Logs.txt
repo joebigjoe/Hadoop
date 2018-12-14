@@ -21,3 +21,6 @@ http://namenode:16010/logLevel
 http://datanode-1:16030/logs/
 http://datanode-1:16030/logs/hbase-hadoopuser-regionserver-datanode-1.log
 http://datanode-1:16030/logLevel
+
+这个时候cloudera manager的优势就体现出来了
+
