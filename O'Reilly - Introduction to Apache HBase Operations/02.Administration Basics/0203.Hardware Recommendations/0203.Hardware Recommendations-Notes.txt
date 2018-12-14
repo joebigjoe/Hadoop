@@ -1,0 +1,38 @@
+Commodity Server - 日用服务器
+也不是我们平时用的屌丝机器
+价格在5000至15000美元之间
+配置参见图2
+
+硬盘的more spindles = more I/O capacity
+硬盘的轴越多，IO处理能力越强。因为指针转来寻找数据。
+HBASE workloads are usually I/O bound
+把多块I/O高性能硬盘挂载到同一个host上降低单一host的花费。dense configuration
+购买低延迟的硬盘。
+参见图3
+
+硬盘不用RAID，直接在HDFS层面做数据备份
+这样的备份是跨机器的，一个机器坏了，还可以恢复回来。
+RAID的备份是跨磁盘的，当单一的磁盘坏掉，可以把数据恢复回来。机器down了，数据就不能访问了。
+JBOD= just bounch of disks
+JBOD + HDFS = 就一堆硬盘 + HDFS 模式
+参见图4
+
+Memory as many as possible
+参见图5
+
+Network IO
+不要叫network成为你的bottle neck
+参见图6
+参见图7
+Benchmarking Hadoop with TeraGen, TeraSort, and TeraValidate with ease
+Benchmarking and Stress Testing an Hadoop Cluster with TeraSort, TestDFSIO & Co. 
+
+虚拟环境和云环境
+性能与安全
+参见图7
+参见图8
+
+
+
+
+

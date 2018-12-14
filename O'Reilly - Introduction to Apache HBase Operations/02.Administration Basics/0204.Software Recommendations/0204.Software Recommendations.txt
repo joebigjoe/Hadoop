@@ -1,0 +1,44 @@
+在选软件的时候
+需要注意的点
+1. Linux系统, 因为我们的软件是跑在操作系统上的，所以这个要考虑
+2. JAVA Virtual Machines JVM 用什么版本的java吗？
+3. HADOOP Distribution 使用什么版本的Hadoop， HBASE的版本
+4. Distribution lifecycle management 
+5. 还可考虑一些商务的解决方案
+参见图1
+
+Linux系统
+各地主流的Linux Distribution都可以。
+培训者认为红帽是最common的
+因为如果付费的话，红帽提供技术支持
+参见图2
+
+Linux系统的一些小细节
+1. 把IPTables关掉，也把其他防火墙关掉
+2. 把SELinux关掉
+3. Turn down swappiness to 10 or less。不懂这个
+4. Turn off Transparent Hugepage Compaction
+5. Use NTP sync datetime，这个会使HBASE无法运行，如果机器之间的时间超过3秒不一致
+6. forwad and reverse DNS配置好，保证机器之间可以互相找到
+参见图3
+
+JVM 最好使用最新的Oracle JAVA JDK
+我以前用的都是openjdk-8-jdk
+这个来修改一下
+参见图4
+
+Hadoop/HBase distributions
+自己配，apache软件包
+或者使用服务提供者提供的包，cloudra，hortonworks
+参见图5
+各自的优点与缺点
+参见图6
+
+管理工具：
+自己安装的话，自己看各自的网页和tool
+选vendor的话，不同的vendor有各自的tool
+参见图7
+
+
+
+

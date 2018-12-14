@@ -1,0 +1,6 @@
+HBase的基本操作
+在以前的学习中已经学习了
+
+有个类似于跑脚本倒入数据的过程是新的
+
+hbase shell -n [scriptname].rb

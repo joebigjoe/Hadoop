@@ -1,0 +1,4 @@
+使用cloudra来安装hbase
+我使用自己的安装方式来玩
+
+cloudra 好使啊！

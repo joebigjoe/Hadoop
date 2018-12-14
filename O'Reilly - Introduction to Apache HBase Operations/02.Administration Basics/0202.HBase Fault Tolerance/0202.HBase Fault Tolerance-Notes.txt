@@ -1,0 +1,40 @@
+图1是我们需要学习的东西的逻辑结构
+
+在中小型的cluster环境里。
+HBASE的Resgion Server和HDFS的NameNode在相同的节点里。
+HBASE的master node和HDFS的masternode在同一个节点里。
+我们的实验室环境是4台机器。
+属于小型cluster，我们将用这样的配置做实验。
+这里的节点指的是机器。
+
+在大型的cluster里边，我们把HBASE的master node和HDFS的masternode分开。
+但是RegionServer和DataNode还是在一起。
+因为需要共享，拷贝，访问数据，这样更make sense。
+ZOOKEEPER要有自己的机器，因为这个哥们是起协调作用的。
+看图2为我们安装后的真实的机器和服务的情况。
+
+图3是最简单的建立的cluster
+把ZOOKEEPER，HBASE Master，HDFS Master安装在同一个节点。
+HBASE region server和HDFS的DataNode安装在同一个节点。
+纵轴为机器和每台机器上装的服务。
+
+图4是比较全面的图解
+图3只是取了图4的部分
+但是图4是有single point of failure的
+也就是ZOOKEEPER，HBASE Master，HDFS Master安装的节点。
+
+于是就出现了图5的防错误模式。
+ZOOKEEPER，HBASE Master，HDFS Master多一个备份节点。
+然后ZOOKEEPER，HBASE Master再多一个节点。
+这里还有些不理解。
+难道3个ZOOKEEPER是为了vote吗？
+是的，这个需要3到5个ZOOKEEPER节点。图5是三个。
+HDFS要在HA mode，有一个完整的备份，如图5.
+
+在图5中，如果down掉的是主的ZOOKEEPER的leader。
+新的选举会发生
+类似的也发生在HBASE master，如果down的是active的，也选出新的active的。
+细节还是要看一下。
+仔细想想，全是坑呀！
+
+

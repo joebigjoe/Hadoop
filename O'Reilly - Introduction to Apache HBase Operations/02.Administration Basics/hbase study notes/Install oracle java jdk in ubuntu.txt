@@ -1,0 +1,49 @@
+Install oracle java jdk in ubuntu
+
+https://medium.com/coderscorner/installing-oracle-java-8-in-ubuntu-16-10-845507b13343
+
+Step 1: Add Oracle’s PPA(Personal Package Archive) to your list of sources so that Ubuntu knows where to check for the updates. Use add-apt-repository command for that.
+
+if you ubder proxy. use the following command:
+export http_proxy="http://web-proxy.corp.hp.com:8080/"
+sudo -E add-apt-repository ppa:webupd8team/java
+
+sudo add-apt-repository ppa:webupd8team/java
+
+Step 2: Then update your package repository by issuing the following command. apt-get is a command-line tool for handling packages.
+
+sudo apt-get update
+
+Steps 3: Then install Oracle JDK 8 using the following.
+
+sudo apt-get install oracle-java8-installer
+
+when shit happens:
+For all users of the system via the /etc/wgetrc or for the user only with the ~/.wgetrc file:
+use_proxy=yes
+http_proxy=127.0.0.1:8080
+https_proxy=127.0.0.1:8080
+
+
+Step 4: Once it is installed successfully, check for the Java version.
+
+javac -version
+
+
+
+Set JAVA_HOME environment variable
+
+    First, find out where Java is installed. You can use the same command as the one we use in step 5 for that.
+
+2. Next open /etc/environment file in any of your favorite editor
+
+sudo nano /etc/environment
+
+3. Add the following line at the end of the file and save it. (Replace the value for JAVA_HOME with the path of your java installation directory)
+
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+4. Finally reload it and check whether the environment variable has been properly set.
+
+source /etc/environment
+echo $JAVA_HOME

@@ -1,0 +1,59 @@
+G1GC？
+
+Cluster roles
+Master Role： 把HBASE master，HDFS name node Resource Manager，ZOOKEEPER都装在这上边
+Worker Role：把HBASE region，HDFS data node，Yarn node Manager都装在这上边.
+Utility Role: 装管理工具集， cloudra management tool, 以及一个SQL，因为management tool要存储数据
+Edge Role：装一些访问数据的工具集，外部通过这些工具集来访问HDFS的数据。
+参见图1
+
+Master Role：
+参见图2
+
+Worker Role：
+参见图3
+Worker Role的内存分配：
+参见图4
+
+Utility Role：
+参见图5
+
+Edge Role：
+参见图6
+
+一个很小的cluster < 10 node
+这种相当于把那些本来该放在不同的节点上的role放在同一个节点上
+我们的试验也这样，因为我们只有4台机器
+我会把Master role，Utility role和Edge role都装在同一台机器上，
+然后再加三个worker node
+参见图7
+
+HA 小cluster
+两个master roles，互相备份
+只要是HA，至少有3个zookeeper，在一个master节点坏掉的时候，唤醒另外一个。
+参见图8
+
+HA 中cluster
+三个master roles，把那个用来做选择的ZOOKEEPER也装在了一个master role上。
+这个时候一般会把机器等量的分配到rack上。
+rack awareness。
+在不同的rack上，放一个Utility role和Edge Role。
+参见图9
+
+HA 大型cluster
+5个master role还是每个rack一个master role？
+各个role都是一个rack上一个？
+出了worker role在一个rack上有多个之外？
+是不是make sense？
+参见图10
+当cluster变大后，namenode的内存需要增加
+recovery的消耗会增大，所以要买更好的硬件。
+参见图11
+
+
+
+
+
+
+
+

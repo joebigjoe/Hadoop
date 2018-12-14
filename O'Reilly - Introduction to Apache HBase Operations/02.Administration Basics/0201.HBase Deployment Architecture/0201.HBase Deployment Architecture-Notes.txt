@@ -1,0 +1,2 @@
+HBASE build 在 HDFS上。
+然后HBASE和HDFS之间通过ZOOKEEPER进行协作

@@ -1,0 +1,4 @@
+PATH="/usr/lib/jvm/java-8-oracle/bin:/usr/local/hbase-2.0.3/bin:/usr/local/hadoop-2.9.2/sbin:/usr/local/hadoop-2.9.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+HADOOP_HOME="/usr/local/hadoop-2.9.2"
+HBASE_HOME="/usr/local/hbase-2.0.3"

@@ -1,0 +1,25 @@
+所有的配置文件需要拷贝到需要启动daemon的机器上
+
+查看配置文件的方法
+
+1. 命令行
+	hbase org.apache.hadoop.conf.Configuration
+	hdoop org.apache.hadoop.conf.Configuration
+	
+2. 网页上
+	http://192.168.1.105:50070/conf
+	conf是关键字
+	
+3. Linux 系统文件夹里
+	/usr/local/hadoop/etc/hadoop/core-site.xml
+	
+Automating Configuration Management
+因为配置好一个，在拷贝
+很是蛋疼
+
+Cloudra Manager
+这种工具还是很强大的！
+如果不用这个
+还有什么？
+
+

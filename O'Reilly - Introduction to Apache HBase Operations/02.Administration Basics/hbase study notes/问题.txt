@@ -1,0 +1,11 @@
+自己安装ZooKeeper
+并和HDFS
+还有HBASE
+运转起来的过程还是没有学会。
+到底ZooKeeper，HDFS，HBASE是怎么互相运作的？
+
+还是没有实现培训里说的那种配置
+得把Zookeeper自己安装
+然后和HBASE，Hadoop配置起来用。
+现在还是用的HBASE自带的ZOOKEEPER，
+每台机器上都有实例。
