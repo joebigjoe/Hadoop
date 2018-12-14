@@ -1,0 +1,20 @@
+jmx
+
+关注 sub=XXX
+
+
+http://namenode:16010/jmx
+http://datanode-1:16030/jmx
+
+search sub=XXX
+log是时间顺序线性打入文件的
+我们需要更好的方法来查看他
+
+这就是以前说的那些GANGLIA, OPENTSDB
+Cloudera Manager做的很好的地方
+
+sub=garbage
+sub=IPC
+sub=replication
+sub=regions
+......

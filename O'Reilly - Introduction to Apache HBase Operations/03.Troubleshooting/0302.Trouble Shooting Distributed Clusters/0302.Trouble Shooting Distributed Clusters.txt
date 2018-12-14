@@ -1,0 +1,31 @@
+关注cluster的机器的集合的状态
+而不再只是单独的机器
+
+GANGLIA
+aggregate 总计
+把不同机器数据总结起来分析
+http://ganglia.sourceforge.net/
+参见图1
+
+NAGIOS
+https://www.nagios.org/
+参见图2
+
+OPENTSDB
+http://opentsdb.net/ 
+参见图3
+
+Cloudera Manager
+https://www.cloudera.com/products/product-components/cloudera-manager.html
+参见图4
+
+Apache Htrace
+http://htrace.incubator.apache.org/
+参见图5
+
+HDFS fsck
+HBase hbck
+
+HBase canary monitoring
+https://stackoverflow.com/questions/12410059/what-is-canary-monitoring
+

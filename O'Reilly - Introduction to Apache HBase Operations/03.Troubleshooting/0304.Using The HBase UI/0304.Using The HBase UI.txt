@@ -1,0 +1,9 @@
+the webpage
+
+http://localhost:16010/master-status
+http://namenode:16010/master-status
+
+自己熟悉master和slave的不同tab的信息
+
+http://datanode-1:16030/rs-status
+

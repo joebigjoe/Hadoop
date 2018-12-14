@@ -1,0 +1,61 @@
+命令行来查看我们需要查看的服务
+
+逻辑结构
+参见图1
+
+daemon分布
+参见图2
+
+有用的命令
+jps
+jps -l
+-l 可以查看这些daemon的全名 文件包jar的名字
+
+通过apache的这些包的名字，我们也可以看出来这些daemon之间的小联系
+Master
+14450 	org.apache.hadoop.hbase.zookeeper.HQuorumPeer
+14558 	org.apache.hadoop.hbase.master.HMaster
+7154 	org.apache.hadoop.mapreduce.v2.hs.JobHistoryServer
+6841 	org.apache.hadoop.yarn.server.resourcemanager.ResourceManager
+6381 	org.apache.hadoop.hdfs.server.namenode.NameNode
+6655 	org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode
+18505 	sun.tools.jps.Jps
+参见图3
+图3里边的ZOOKEEPER是和我们跑的不一样的
+org.apache.zookeeper.server.quorum.QuorumPeerMain
+
+Slave
+7491 sun.tools.jps.Jps
+5508 org.apache.hadoop.hbase.zookeeper.HQuorumPeer
+5690 org.apache.hadoop.hbase.regionserver.HRegionServer
+2175 org.apache.hadoop.hdfs.server.datanode.DataNode
+2351 org.apache.hadoop.yarn.server.nodemanager.NodeManager
+
+LOGS
+在LINUX的LOG系统里的log
+而不是在自己daemon里边的log
+/var/log/<daemon>
+这个要在CM cloudera manager安装的情况下才有
+自己安装的机器上，只在自己的daemon文件夹下才有？
+参见图4
+
+Configuration Directory
+自己安装
+hadoop: <daemon>/etc/hadoop
+habase: <daemon>/conf
+
+CM 安装：统一的类似目录结构
+所以Cloudera还是很好的？哈哈
+/etc/<daemon>/conf
+参见图5
+
+HDFS basic command
+参见图6
+
+HBASE basic command
+参见图7
+
+
+
+
+

@@ -1,0 +1,53 @@
+SubSystems
+
+HBASE 是build在巨人的肩膀上的
+先是JVM， JVM跑在LINUX上， LINUX跑在一堆硬件上边。
+所以错误的来源可能就4点
+1. HBASE本身
+2. JVM，但是个人理解JVM的错误可能是我们的code造成的。JVM最多叫优化。
+3. LINUX上的问题
+4. 硬件问题
+
+鉴别subsystem，一步步定位root cause
+参见图1
+
+subsystem 布局
+参见图2
+参见图3
+
+Linux诊断汇总
+参见图4
+
+Linux诊断层级
+参见图5
+
+JVM诊断
+jps，最基本的诊断 哈哈
+参见图6
+
+daemon自己的log
+主要看自己的log，和在网页上查看log，本质上都是看daemon自己记录的log
+在HBASE， Hadoop，ZOOKEEPER的安装目录下，都有自己的logs，阅读找exception。
+metrics 度量，低俗小说里的单词，我说咋这么熟，就是没想起来啥意思呢。
+http://<daemon>/jmx
+http://<daemon>/logs
+http://<daemon>/conf
+http://<daemon>/dump
+http://<daemon>/stacks
+<daemon>/logs
+var/log/<daemon>
+除了查看单独的节点上的log
+也要查看汇总的log
+在master node上应该有汇总的log
+这种master slave模式应该有汇总的log
+参见图7
+
+诊断汇总
+参见图8
+
+what is normal？
+第一normal，也就是系统的健康常态。
+然后再找abnormal。
+参见图9
+
+

@@ -1,0 +1,23 @@
+Logs are your friend.
+log4j 是开源系统的默认打log工具
+参见图1
+
+log的大小
+系统很快就会产生很多的log
+所以大数据的一个方向就是分析logs
+参见图2
+
+INFO-level means Okay
+WARN-level maybe issue
+ERROR-level definitely error
+Exception - code error
+
+logs
+
+http://namenode:16010/logs/
+http://namenode:16010/logs/hbase-hadoopuser-master-namenode.log
+http://namenode:16010/logLevel
+
+http://datanode-1:16030/logs/
+http://datanode-1:16030/logs/hbase-hadoopuser-regionserver-datanode-1.log
+http://datanode-1:16030/logLevel

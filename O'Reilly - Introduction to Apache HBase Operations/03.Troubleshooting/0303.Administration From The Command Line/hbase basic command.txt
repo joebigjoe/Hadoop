@@ -1,0 +1,107 @@
+hbase basic command:
+
+hadoopuser@namenode:/var/log$ hbase classpath
+/usr/local/hbase-2.0.3/conf:/usr/lib/jvm/java-8-oracle/lib/tools.jar:/usr/local/hbase-2.0.3:/usr/local/hbase-2.0.3/lib/aopalliance-1.0.jar:/usr/local/hbase-2.0.3/lib/aopalliance-repackaged-2.5.0-b32.jar:/usr/local/hbase-2.0.3/lib/apacheds-i18n-2.0.0-M15.jar:/usr/local/hbase-2.0.3/lib/apacheds-kerberos-codec-2.0.0-M15.jar:/usr/local/hbase-2.0.3/lib/api-asn1-api-1.0.0-M20.jar:/usr/local/hbase-2.0.3/lib/api-util-1.0.0-M20.jar:/usr/local/hbase-2.0.3/lib/asm-3.1.jar:/usr/local/hbase-2.0.3/lib/audience-annotations-0.5.0.jar:/usr/local/hbase-2.0.3/lib/avro-1.7.7.jar:/usr/local/hbase-2.0.3/lib/commons-beanutils-core-1.8.0.jar:/usr/local/hbase-2.0.3/lib/commons-cli-1.2.jar:/usr/local/hbase-2.0.3/lib/commons-codec-1.10.jar:/usr/local/hbase-2.0.3/lib/commons-collections-3.2.2.jar:/usr/local/hbase-2.0.3/lib/commons-compress-1.4.1.jar:/usr/local/hbase-2.0.3/lib/commons-configuration-1.6.jar:/usr/local/hbase-2.0.3/lib/commons-crypto-1.0.0.jar:/usr/local/hbase-2.0.3/lib/commons-daemon-1.0.13.jar:/usr/local/hbase-2.0.3/lib/commons-digester-1.8.jar:/usr/local/hbase-2.0.3/lib/commons-httpclient-3.1.jar:/usr/local/hbase-2.0.3/lib/commons-io-2.5.jar:/usr/local/hbase-2.0.3/lib/commons-lang-2.6.jar:/usr/local/hbase-2.0.3/lib/commons-lang3-3.6.jar:/usr/local/hbase-2.0.3/lib/commons-logging-1.2.jar:/usr/local/hbase-2.0.3/lib/commons-math3-3.6.1.jar:/usr/local/hbase-2.0.3/lib/commons-net-3.1.jar:/usr/local/hbase-2.0.3/lib/curator-client-4.0.0.jar:/usr/local/hbase-2.0.3/lib/curator-framework-4.0.0.jar:/usr/local/hbase-2.0.3/lib/curator-recipes-4.0.0.jar:/usr/local/hbase-2.0.3/lib/disruptor-3.3.6.jar:/usr/local/hbase-2.0.3/lib/findbugs-annotations-1.3.9-1.jar:/usr/local/hbase-2.0.3/lib/gson-2.2.4.jar:/usr/local/hbase-2.0.3/lib/guava-11.0.2.jar:/usr/local/hbase-2.0.3/lib/guice-3.0.jar:/usr/local/hbase-2.0.3/lib/guice-servlet-3.0.jar:/usr/local/hbase-2.0.3/lib/hadoop-annotations-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-auth-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-client-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-common-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-common-2.7.7-tests.jar:/usr/local/hbase-2.0.3/lib/hadoop-distcp-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-hdfs-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-hdfs-2.7.7-tests.jar:/usr/local/hbase-2.0.3/lib/hadoop-mapreduce-client-app-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-mapreduce-client-common-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-mapreduce-client-core-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-mapreduce-client-hs-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-mapreduce-client-jobclient-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-mapreduce-client-shuffle-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-minicluster-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-api-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-client-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-common-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-server-applicationhistoryservice-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-server-common-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-server-nodemanager-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-server-resourcemanager-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-server-tests-2.7.7-tests.jar:/usr/local/hbase-2.0.3/lib/hadoop-yarn-server-web-proxy-2.7.7.jar:/usr/local/hbase-2.0.3/lib/hamcrest-core-1.3.jar:/usr/local/hbase-2.0.3/lib/hbase-annotations-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-annotations-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-client-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-common-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-common-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-endpoint-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-examples-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-external-blockcache-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-hadoop2-compat-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-hadoop2-compat-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-hadoop-compat-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-hadoop-compat-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-http-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-it-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-it-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-mapreduce-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-mapreduce-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-metrics-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-metrics-api-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-procedure-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-protocol-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-protocol-shaded-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-replication-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-resource-bundle-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-rest-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-rsgroup-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-rsgroup-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-server-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-server-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hbase-shaded-miscellaneous-2.1.0.jar:/usr/local/hbase-2.0.3/lib/hbase-shaded-netty-2.1.0.jar:/usr/local/hbase-2.0.3/lib/hbase-shaded-protobuf-2.1.0.jar:/usr/local/hbase-2.0.3/lib/hbase-shell-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-testing-util-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-thrift-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-zookeeper-2.0.3.jar:/usr/local/hbase-2.0.3/lib/hbase-zookeeper-2.0.3-tests.jar:/usr/local/hbase-2.0.3/lib/hk2-api-2.5.0-b32.jar:/usr/local/hbase-2.0.3/lib/hk2-locator-2.5.0-b32.jar:/usr/local/hbase-2.0.3/lib/hk2-utils-2.5.0-b32.jar:/usr/local/hbase-2.0.3/lib/htrace-core-3.2.0-incubating.jar:/usr/local/hbase-2.0.3/lib/htrace-core4-4.2.0-incubating.jar:/usr/local/hbase-2.0.3/lib/httpclient-4.5.3.jar:/usr/local/hbase-2.0.3/lib/httpcore-4.4.6.jar:/usr/local/hbase-2.0.3/lib/jackson-annotations-2.9.0.jar:/usr/local/hbase-2.0.3/lib/jackson-core-2.9.2.jar:/usr/local/hbase-2.0.3/lib/jackson-core-asl-1.9.13.jar:/usr/local/hbase-2.0.3/lib/jackson-databind-2.9.2.jar:/usr/local/hbase-2.0.3/lib/jackson-jaxrs-1.8.3.jar:/usr/local/hbase-2.0.3/lib/jackson-jaxrs-base-2.9.2.jar:/usr/local/hbase-2.0.3/lib/jackson-jaxrs-json-provider-2.9.2.jar:/usr/local/hbase-2.0.3/lib/jackson-mapper-asl-1.9.13.jar:/usr/local/hbase-2.0.3/lib/jackson-module-jaxb-annotations-2.9.2.jar:/usr/local/hbase-2.0.3/lib/jackson-xc-1.8.3.jar:/usr/local/hbase-2.0.3/lib/jamon-runtime-2.4.1.jar:/usr/local/hbase-2.0.3/lib/javassist-3.20.0-GA.jar:/usr/local/hbase-2.0.3/lib/javax.annotation-api-1.2.jar:/usr/local/hbase-2.0.3/lib/javax.el-3.0.1-b08.jar:/usr/local/hbase-2.0.3/lib/javax.inject-2.5.0-b32.jar:/usr/local/hbase-2.0.3/lib/java-xmlbuilder-0.4.jar:/usr/local/hbase-2.0.3/lib/javax.servlet-api-3.1.0.jar:/usr/local/hbase-2.0.3/lib/javax.servlet.jsp-2.3.2.jar:/usr/local/hbase-2.0.3/lib/javax.servlet.jsp-api-2.3.1.jar:/usr/local/hbase-2.0.3/lib/javax.servlet.jsp.jstl-1.2.0.v201105211821.jar:/usr/local/hbase-2.0.3/lib/javax.servlet.jsp.jstl-1.2.2.jar:/usr/local/hbase-2.0.3/lib/javax.ws.rs-api-2.0.1.jar:/usr/local/hbase-2.0.3/lib/jaxb-api-2.2.12.jar:/usr/local/hbase-2.0.3/lib/jaxb-impl-2.2.3-1.jar:/usr/local/hbase-2.0.3/lib/jcodings-1.0.18.jar:/usr/local/hbase-2.0.3/lib/jersey-client-2.25.1.jar:/usr/local/hbase-2.0.3/lib/jersey-common-2.25.1.jar:/usr/local/hbase-2.0.3/lib/jersey-container-servlet-core-2.25.1.jar:/usr/local/hbase-2.0.3/lib/jersey-guava-2.25.1.jar:/usr/local/hbase-2.0.3/lib/jersey-media-jaxb-2.25.1.jar:/usr/local/hbase-2.0.3/lib/jersey-server-2.25.1.jar:/usr/local/hbase-2.0.3/lib/jets3t-0.9.0.jar:/usr/local/hbase-2.0.3/lib/jettison-1.3.8.jar:/usr/local/hbase-2.0.3/lib/jetty-6.1.26.jar:/usr/local/hbase-2.0.3/lib/jetty-http-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-io-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-jmx-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-jsp-9.2.19.v20160908.jar:/usr/local/hbase-2.0.3/lib/jetty-schemas-3.1.M0.jar:/usr/local/hbase-2.0.3/lib/jetty-security-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-server-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-servlet-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-sslengine-6.1.26.jar:/usr/local/hbase-2.0.3/lib/jetty-util-6.1.26.jar:/usr/local/hbase-2.0.3/lib/jetty-util-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-util-ajax-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-webapp-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/jetty-xml-9.3.19.v20170502.jar:/usr/local/hbase-2.0.3/lib/joni-2.1.11.jar:/usr/local/hbase-2.0.3/lib/jsch-0.1.54.jar:/usr/local/hbase-2.0.3/lib/junit-4.12.jar:/usr/local/hbase-2.0.3/lib/leveldbjni-all-1.8.jar:/usr/local/hbase-2.0.3/lib/libthrift-0.9.3.jar:/usr/local/hbase-2.0.3/lib/log4j-1.2.17.jar:/usr/local/hbase-2.0.3/lib/metrics-core-3.2.1.jar:/usr/local/hbase-2.0.3/lib/netty-all-4.0.23.Final.jar:/usr/local/hbase-2.0.3/lib/org.eclipse.jdt.core-3.8.2.v20130121.jar:/usr/local/hbase-2.0.3/lib/osgi-resource-locator-1.0.1.jar:/usr/local/hbase-2.0.3/lib/paranamer-2.3.jar:/usr/local/hbase-2.0.3/lib/protobuf-java-2.5.0.jar:/usr/local/hbase-2.0.3/lib/slf4j-api-1.7.25.jar:/usr/local/hbase-2.0.3/lib/slf4j-log4j12-1.7.25.jar:/usr/local/hbase-2.0.3/lib/snappy-java-1.0.5.jar:/usr/local/hbase-2.0.3/lib/spymemcached-2.12.2.jar:/usr/local/hbase-2.0.3/lib/validation-api-1.1.0.Final.jar:/usr/local/hbase-2.0.3/lib/xmlenc-0.52.jar:/usr/local/hbase-2.0.3/lib/xz-1.0.jar:/usr/local/hbase-2.0.3/lib/zookeeper-3.4.10.jar:/usr/local/hadoop-2.9.2/etc/hadoop:/usr/local/hadoop-2.9.2/share/hadoop/common/lib/*:/usr/local/hadoop-2.9.2/share/hadoop/common/*:/usr/local/hadoop-2.9.2/share/hadoop/hdfs:/usr/local/hadoop-2.9.2/share/hadoop/hdfs/lib/*:/usr/local/hadoop-2.9.2/share/hadoop/hdfs/*:/usr/local/hadoop-2.9.2/share/hadoop/yarn:/usr/local/hadoop-2.9.2/share/hadoop/yarn/lib/*:/usr/local/hadoop-2.9.2/share/hadoop/yarn/*:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/lib/*:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/*:/usr/local/hadoop-2.9.2/contrib/capacity-scheduler/*.jar
+hadoopuser@namenode:/var/log$ hbase shell
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hbase-2.0.3/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop-2.9.2/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+HBase Shell
+Use "help" to get list of supported commands.
+Use "exit" to quit this interactive shell.
+For Reference, please visit: http://hbase.apache.org/2.0/book.html#shell
+Version 2.0.3, r87a3aea8ee2d284807f7d4fbdac1f6d9dfedbc17, Sat Nov 24 23:42:51 UTC 2018
+Took 0.0068 seconds                                                                                                                           
+hbase(main):001:0> quit
+hadoopuser@namenode:/var/log$ hbase zkcli
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hbase-2.0.3/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop-2.9.2/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Connecting to namenode:2181,datanode-1:2181,datanode-2:2181,datanode-3:2181
+2018-12-14 05:42:40,773 INFO  [main] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.10-39d3a4f269333c922ed3db283be479f9deacaa0f, built on 03/23/2017 10:13 GMT
+2018-12-14 05:42:40,774 INFO  [main] zookeeper.ZooKeeper: Client environment:host.name=namenode
+2018-12-14 05:42:40,774 INFO  [main] zookeeper.ZooKeeper: Client environment:java.version=1.8.0_191
+2018-12-14 05:42:40,774 INFO  [main] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2018-12-14 05:42:40,774 INFO  [main] zookeeper.ZooKeeper: Client environment:java.home=/usr/lib/jvm/java-8-oracle/jre
+2018-12-14 05:42:40,774 INFO  [main] zookeeper.ZooKeeper: reduce/lib/junit-4.11.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/lib/netty-3.6.2.Final.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-common-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-app-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.9.2-tests.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-2.9.2.jar:/usr/local/hadoop-2.9.2/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-plugins-2.9.2.jar:/usr/local/hadoop-2.9.2/contrib/capacity-scheduler/*.jar:/usr/local/hbase-2.0.3/lib/zkcli/jline-0.9.94.jar
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/local/hadoop-2.9.2/lib/native
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:os.version=4.15.0-29-generic
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:user.name=hadoopuser
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:user.home=/home/hadoopuser
+2018-12-14 05:42:40,775 INFO  [main] zookeeper.ZooKeeper: Client environment:user.dir=/var/log
+2018-12-14 05:42:40,778 INFO  [main] zookeeper.ZooKeeper: Initiating client connection, connectString=namenode:2181,datanode-1:2181,datanode-2:2181,datanode-3:2181 sessionTimeout=30000 watcher=org.apache.zookeeper.ZooKeeperMain$MyWatcher@1a84f40f
+Welcome to ZooKeeper!
+2018-12-14 05:42:40,815 INFO  [main-SendThread(namenode:2181)] zookeeper.ClientCnxn: Opening socket connection to server namenode/192.168.1.110:2181. Will not attempt to authenticate using SASL (unknown error)
+2018-12-14 05:42:40,826 INFO  [main-SendThread(namenode:2181)] zookeeper.ClientCnxn: Socket connection established to namenode/192.168.1.110:2181, initiating session
+JLine support is enabled
+2018-12-14 05:42:40,862 INFO  [main-SendThread(namenode:2181)] zookeeper.ClientCnxn: Session establishment complete on server namenode/192.168.1.110:2181, sessionid = 0x67aad5bd460002, negotiated timeout = 30000
+
+WATCHER::
+
+WatchedEvent state:SyncConnected type:None path:null
+[zk: namenode:2181,datanode-1:2181,datanode-2:2181,datanode-3:2181(CONNECTED) 0] quit
+Quitting...
+2018-12-14 05:42:47,734 INFO  [main] zookeeper.ZooKeeper: Session: 0x67aad5bd460002 closed
+2018-12-14 05:42:47,738 INFO  [main-EventThread] zookeeper.ClientCnxn: EventThread shut down for session: 0x67aad5bd460002
+
+hadoopuser@namenode:/var/log$ hbase -help
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
