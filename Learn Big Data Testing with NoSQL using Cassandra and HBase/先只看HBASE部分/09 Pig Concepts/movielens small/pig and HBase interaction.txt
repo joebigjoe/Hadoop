@@ -1,0 +1,36 @@
+pig and HBase interaction
+
+1. pig -x mapreduce
+2. movies = load 'hdfs://namenode:8020/moviedata/movies10.csv' using PigStorage(',') as (movieId:int, title:chararray, genres:chararray);
+3. describe movies;
+4. illustrate movies;
+5. create 'movielens', 'movies_hbase'
+6. STORE movies_pig into 'hbase://movielens' USING org.apache.pig.backend.hadoop.hbase.HBaseStorage('movies_hbase:movieTitle,movies_hbase:movieGenres');
+7. scan 'movielens
+
+hbase(main):020:0> scan 'movielens'
+ROW                                  COLUMN+CELL                                                                                              
+ 1                                   column=movies_hbase:movieGenres, timestamp=1544876557707, value=Adventure|Animation|Children|Comedy|Fanta
+                                     sy                                                                                                       
+ 1                                   column=movies_hbase:movieTitle, timestamp=1544876557707, value=Toy Story (1995)                          
+ 10                                  column=movies_hbase:movieGenres, timestamp=1544876557718, value=Action|Adventure|Thriller                
+ 10                                  column=movies_hbase:movieTitle, timestamp=1544876557718, value=GoldenEye (1995)                          
+ 2                                   column=movies_hbase:movieGenres, timestamp=1544876557717, value=Adventure|Children|Fantasy               
+ 2                                   column=movies_hbase:movieTitle, timestamp=1544876557717, value=Jumanji (1995)                            
+ 3                                   column=movies_hbase:movieGenres, timestamp=1544876557717, value=Comedy|Romance                           
+ 3                                   column=movies_hbase:movieTitle, timestamp=1544876557717, value=Grumpier Old Men (1995)                   
+ 4                                   column=movies_hbase:movieGenres, timestamp=1544876557718, value=Comedy|Drama|Romance                     
+ 4                                   column=movies_hbase:movieTitle, timestamp=1544876557718, value=Waiting to Exhale (1995)                  
+ 5                                   column=movies_hbase:movieGenres, timestamp=1544876557718, value=Comedy                                   
+ 5                                   column=movies_hbase:movieTitle, timestamp=1544876557718, value=Father of the Bride Part II (1995)        
+ 6                                   column=movies_hbase:movieGenres, timestamp=1544876557718, value=Action|Crime|Thriller                    
+ 6                                   column=movies_hbase:movieTitle, timestamp=1544876557718, value=Heat (1995)                               
+ 7                                   column=movies_hbase:movieGenres, timestamp=1544876557718, value=Comedy|Romance                           
+ 7                                   column=movies_hbase:movieTitle, timestamp=1544876557718, value=Sabrina (1995)                            
+ 8                                   column=movies_hbase:movieGenres, timestamp=1544876557718, value=Adventure|Children                       
+ 8                                   column=movies_hbase:movieTitle, timestamp=1544876557718, value=Tom and Huck (1995)                       
+ 9                                   column=movies_hbase:movieGenres, timestamp=1544876557718, value=Action                                   
+ 9                                   column=movies_hbase:movieTitle, timestamp=1544876557718, value=Sudden Death (1995)                       
+10 row(s)
+
+

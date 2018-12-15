@@ -1,0 +1,23 @@
+已经学习了pig
+需要搞清楚pig操作hbase
+以前这个点没有搞明白
+
+pig -x local
+pig -x mapreduce
+
+
+hbase part:
+create 'movielens', 'movies_hbase'
+
+pig part:
+movies_pig = load 'hdfs://namenode:8020/moviedata/movies10.csv' using PigStorage(',') as (movieId:int, title:chararray, genres:chararray);
+STORE movies_pig into 'hbase://movielens' USING org.apache.pig.backend.hadoop.hbase.HBaseStorage('movies_hbase:movieTitle,movies_hbase:movieGenres');
+
+以前的问题：
+Hbase会把pig传入的第一列作为其row的key。
+也就是说真正的map是从第二列开始的。
+这就是以前的结果为什么总不make sense。
+我们的movielens数据有3列。
+正好第1列是ID。
+我们Store到HBASE的时候，只map movieTitle和movieGenres。
+这样之后，得到的结果就完全make sense了。

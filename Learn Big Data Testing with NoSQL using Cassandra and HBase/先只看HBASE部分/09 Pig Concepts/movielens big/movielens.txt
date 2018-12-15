@@ -1,0 +1,15 @@
+movielens
+
+hbase:
+create 'movielens', 'movies', 'ratings' 
+
+pig:
+movies = load 'hdfs://namenode:8020/moviedata/movies.csv' using PigStorage(',') as (movieId:int, title:chararray, genres:chararray);
+STORE movies into 'hbase://movielens' USING org.apache.pig.backend.hadoop.hbase.HBaseStorage('movies:title,movies:genres');
+ratings = load 'hdfs://namenode:8020/moviedata/ratings.csv' using PigStorage(',') as (userId:int, movieId:int, rating:chararray, timestamp:chararray);
+STORE ratings into 'hbase://movielens' USING org.apache.pig.backend.hadoop.hbase.HBaseStorage('ratings:movieId,ratings:rating,ratings:timestamp');
+
+由于ID不一样
+还是要搞两个table
+所以呢，column family 不可以理解成一张表
+
