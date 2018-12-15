@@ -1,0 +1,47 @@
+show_filters
+like the where condition in RMDBS
+
+filters
+
+hbase(main):041:0> show_filters
+DependentColumnFilter                                                                                    
+KeyOnlyFilter                                                                                                                            
+ColumnCountGetFilter                                                                                                                     
+SingleColumnValueFilter                                                                                                                  
+PrefixFilter                                                                                                                             
+SingleColumnValueExcludeFilter                                                                                                           
+FirstKeyOnlyFilter                                                                                                                       
+ColumnRangeFilter                                                                                                                        
+ColumnValueFilter                                                                                                                        
+TimestampsFilter                                                                                                                         
+FamilyFilter                                                                                                                             
+QualifierFilter                                                                                                                          
+ColumnPrefixFilter                                                                                                                       
+RowFilter                                                                                                                                
+MultipleColumnPrefixFilter                                                                                                               
+InclusiveStopFilter                                                                                                                      
+PageFilter                                                                                                                               
+ValueFilter                                                                                                                              
+ColumnPaginationFilter 
+
+just show the column family and not the real values.
+scan 'htestm', {FILTER => "KeyOnlyFilter()"}
+
+find the rows that starts with name rowm1
+scan 'htestm', {FILTER => "PrefixFilter('rowm1')"}
+
+find the columns that starts with name e.
+it is email for htestm. 
+scan 'htestm', {FILTER => "ColumnPrefixFilter('e')"}
+when change to n, it is name
+scan 'htestm', {FILTER => "ColumnPrefixFilter('n')"}
+
+mutiple columns
+scan 'htestm', {FILTER => "MultipleColumnPrefixFilter('e','n')"}
+this will return email and name
+
+there are more filters
+we need to learn later
+go on to use pig to manipulate the data.
+
+

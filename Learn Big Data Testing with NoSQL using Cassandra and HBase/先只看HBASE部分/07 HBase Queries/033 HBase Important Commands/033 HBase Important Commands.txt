@@ -1,0 +1,27 @@
+HBASE important command
+
+list = show all the tables, 类似于mysql的 show tables。
+status = the status of HBASE
+version = version of hbase
+whoami = the current logged user
+create = create a table
+put = insert data
+get = query data with a where
+scan = query the whole table
+describe = 描述某个table，类似于mysql
+参见图1
+
+
+delete = 删除row或者table
+truncate = 切去一端 相当于清空数据，但是还保留原来的table结构？这个命令里第一步是先disable table
+enable = enable a table if it is disabled.
+disable = disable a table before drop
+count =  得到table里数据的行数，这个是count rowkey的数量。我创建的htestm，只有row1和row2两行，所以count=2
+drop = 删除处于disable状态的table
+alter = 修改table
+grant = 赋予table权限
+revoke = 删除table权限
+参见图2
+
+
+

@@ -1,0 +1,21 @@
+deleteall 'htestm', 'rowm1'
+delete all the cells of rowkey 'rowm1' 
+
+delete 只是delete单一的cell
+
+truncate 把一个table清空，但是会保持原有的schema
+
+alter 修改table的结构
+例如 删除某个column family
+
+delete a cell
+delete 'htest', 'row1', 'cf:age'
+
+alter a table property
+alter 'htest', NAME => 'cf', VERSIONS => '2'
+
+add a column family 
+alter 'htest', NAME => 'cf1', VERSIONS => '3'
+
+delete a column family
+alter 'htest', 'delete' => 'cf'

@@ -1,0 +1,5 @@
+已经练习过，跳过
+list
+create 
+put
+scan

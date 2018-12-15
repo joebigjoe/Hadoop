@@ -1,0 +1,4 @@
+disable 'htestm'
+scan 'htestm'
+ERROR: Table 'htestm' is disabled.
+describe 'htestm'

@@ -1,0 +1,5 @@
+start-hbase.sh
+status
+list
+whoami
+version

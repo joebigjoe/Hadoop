@@ -1,0 +1,10 @@
+put 
+get 
+scan
+
+layer of the query
+
+get 'htestm', 'rowm1', 'cf1:age'
+get 'htestm', 'rowm1', 'cf1'
+get 'htestm', 'rowm1'
+scan 'htestm'
