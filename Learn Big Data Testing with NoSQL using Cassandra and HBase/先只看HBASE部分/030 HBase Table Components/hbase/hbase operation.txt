@@ -1,0 +1,39 @@
+hbase operation
+
+1. hbase shell
+2. create 'htest', 'cf1'
+3. scan 'htest'
+4. describe 'htest'
+5. put 'htest', 'row1', 'cf:name', 'joey'
+6. put 'htest', 'row1', 'cf:age', '30'
+7. put 'htest', 'row1', 'cf:email', '412371201@163.com'
+8. put 'htest', 'row1', 'cf:password', 'joey@123'
+9. get 'htest', 'row1'
+	COLUMN					CELL                                                                                             
+	cf:age                  timestamp=1544858742577, value=30                                                                        
+	cf:email                timestamp=1544859076484, value=412371201@163.com                                                         
+	cf:name                 timestamp=1544858626575, value=jiancheng                                                                 
+	cf:password             timestamp=1544859186907, value=joey@123                                                                  
+	1 row(s)
+10. it is just one row. since it is using the same row id.
+11. hbase-daemon.sh start REST
+12. http://namenode:8080/htest/row1/cf:email
+
+now let's play with mutiple clumn family and mutilpe rows
+1. create 'htestm', 'cf1', 'cf2', 'cf3'
+2. describe 'htestm'
+3. input data:
+	put 'htestm', 'rowm1', 'cf1:name', 'aria'
+    put 'htestm', 'rowm1', 'cf1:age', '18'     
+    put 'htestm', 'rowm1', 'cf2:email', 'aria@163.com'
+    put 'htestm', 'rowm1', 'cf2:password', 'ariarockson'                       
+    put 'htestm', 'rowm1', 'cf3:issingle', 'false'      
+    put 'htestm', 'rowm2', 'cf1:name', 'joey'
+    put 'htestm', 'rowm2', 'cf1:age', '30'
+    put 'htestm', 'rowm2', 'cf2:email', '412371201@163.com' 
+    put 'htestm', 'rowm2', 'cf2:password', 'joey@123'
+    put 'htestm', 'rowm2', 'cf3:issingle', 'false'                     
+4. get 'htestm','rowm1'
+5. get 'htestm','rowm2'
+6. http://namenode:8080/htestm/rowm1/cf1:name
+7. http://namenode:8080/htestm/rowm2/cf3:issingle

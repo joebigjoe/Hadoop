@@ -1,0 +1,22 @@
+总架构
+参见图1
+
+HMASTER
+依赖ZooKeeper去管理Region
+Zookeeper是一个分布式协调服务。
+coordinate = （使）协调；（使）一致；（使）同等
+参见图2
+
+HRegion
+数据的存储点HFile
+那HDFS和HBASE到底是啥关系？
+参见图3
+https://www.kdnuggets.com/2017/05/hdfs-hbase-need-know.html
+
+Zookeeper
+协调工作的服务
+
+Where is the catalog table?
+ROOT
+META
+参见图4

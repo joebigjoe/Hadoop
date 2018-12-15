@@ -1,0 +1,27 @@
+官方的书是不是就是最好的？
+https://hbase.apache.org/book.html
+
+还有就是那本
+HBase: The Definitive Guide
+
+HBASE 面向列的数据库
+MYSQL 面向行的数据库
+
+mysql已经知道了
+学些一个nonsql数据库很重要
+这个是下一个学些东西
+然后是Spark
+
+Hadoop下边有很多的数据库系统
+Hive， Cassandra，HBASE
+都是啥用途？
+
+Cassandra VS HBASE
+https://www.scnsoft.com/blog/cassandra-vs-hbase
+
+Cassandra VS mongodb
+https://scalegrid.io/blog/cassandra-vs-mongodb/
+
+参见图1
+参见图2
+参见图3
