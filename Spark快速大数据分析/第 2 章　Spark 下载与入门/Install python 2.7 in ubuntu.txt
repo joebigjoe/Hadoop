@@ -1,0 +1,32 @@
+Install python 2.7 in ubuntu
+https://askubuntu.com/questions/981118/correct-way-to-install-python-2-7-on-ubuntu-17-10
+
+after installation.
+hadoopuser@namenode:/usr/bin$ python
+Python 2.7.15rc1 (default, Nov 12 2018, 14:31:15) 
+[GCC 7.3.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+hadoopuser@namenode:/usr/bin$ python3
+Python 3.6.5 (default, Apr  1 2018, 05:46:30) 
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+
+>>> os.getcwd()
+'/home/hadoopuser'
+>>> lines = sc.textFile("/usr/local/spark-2.4.0-bin-hadoop2.7/README.md")
+>>> lines.count()
+105     
+>>> lines.first()
+u'# Apache Spark'
+>>> pythonlines = lines.filter(lambda line : "Python" in line);
+>>> pythonlines
+PythonRDD[8] at RDD at PythonRDD.scala:53
+>>> pythonlines.first()
+u'high-level APIs in Scala, Java, Python, and R, and an optimized engine that'
+>>> 
+
+
+this is the spark website
+localhost:4040

@@ -1,0 +1,21 @@
+Spark本身是Scala写的。
+运行在java虚拟机上。
+
+http://mesos.apache.org/
+Program against your datacenter
+like it’s a single pool of resources 
+Apache Mesos abstracts CPU, memory, storage, and other compute resources away from machines (physical or virtual), enabling fault-tolerant and elastic distributed systems to easily be built and run effectively.
+又一个分布式系统吗？
+
+安装好之后run pyspark，激活spark的python接口
+
+修改log4j的log级别
+Conf/log4j.properties
+Log4j.rootCategory=WARN, console
+
+一切内网的问题都是代理问题
+这是第一个要想到的
+
+Java的还是没跑起来
+需要学习下java的最新的feature
+继续学习
