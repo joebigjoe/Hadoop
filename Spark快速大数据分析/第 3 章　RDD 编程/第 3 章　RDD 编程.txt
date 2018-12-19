@@ -1,0 +1,92 @@
+RDD的操作分为 转化操作和行动操作
+transaction 和 action
+RDD的计算只有在第一次调用行动操作时才会发生。
+
+filter属于转化操作
+first属于行动操作
+
+对于python
+
+当传递函数时需要注意，Python会把函数所在的对象也序列化传进去。
+如果我们只传递某个对象的属性，python会把整个对象都序列化后传进去。
+
+看一下Python OOP Object Oriented Program
+
+基本的转化：
+map() and filter()
+map(): 接收一个函数，把这个函数作用于RDD中的每个元素，将函数的返回值，作为该元素的新值。
+Filter(): 接收一个函数，并将RDD中的满足该函数条件的元素放入新的RDD中。
+Flatmap(): 和map() 类似，我们提供给flatMap的函数被分别应用到了输入RDD的每个元素上，不过返回的不是一个元素，而是返回一个值序列的迭代器。输出的RDD倒不是由迭代器组成，我们得到的是一个包含各个迭代器可访问的所有元素的RDD。
+			把返回的迭代器“拍扁”，所以叫 flat
+
+伪集合操作
+Union 合集 不去重
+Distinct 去重
+Intersection 交集 去重
+Subtract 差集 去重
+Cartesian 笛卡尔积
+Sample 取一些数据
+
+行动操作
+Reduce
+
+好好学习一下Python的lambda
+Lambda的冒号：是函数定义里的冒号
+Lambda的返回值是函数return的返回值。
+也就说：lambda是自带return的。
+def sum(a, b):
+    return a + b
+
+sum1 = lambda x, y: x+y
+
+result = sum(2,3)
+print(result)
+
+result1 = sum1(3,4)
+print(result1)
+
+现在这个点倒不是理解lambda
+因为至少现在的lambda还是相对简单一些的
+Reduce的时候，针对rdd里边的每个值 到底在作什么
+经过相加和拼string的结果。
+暂时认定：reduce的结果是 
+X = a
+Y = b 
+X = a + b
+Y = c
+…..
+a	b	c	d	e	f	g	h	i	j
+1	2	3	4	5	6	7	8	9	0
+
+由于lambda是肯定有return的，只不过是那个return被省略掉了。
+Return的值a + b就被作为了下一次迭代的第一个参数X
+
+Aggregate的累加器到底是什么？
+# aggregate 
+# the initial number is (0,0)
+# in the first step x[0] = 0, x[1] = 0
+# then go in the aggregation.
+# x,y: still loops the whole RDD, just the first one is the initial value
+seqOp = (lambda x, y: (x[0] + y, x[1] + 1))
+combOp = (lambda x, y: (x[0] + y[0], x[1] + y[1]))
+rdd_aggregated = rdd_numbers.aggregate((0,0), seqOp, combOp)
+print(rdd_aggregated)
+
+由于aggregate有初始值(0,0)
+所以第一步x[0] = 0, x[1] = 0
+然后就还是循环所有的值
+只不过第一个是默认值，也就是x，第二个是RDD里边的第一个值，也就是y
+然后循环知道RDD的所有的值都循环完为止。
+初始值也规定了我们最终的返回值的类型
+像我们的例子里，返回值类型应该是tuple
+
+那些返回值给驱动器程序的方法
+
+Collect() 返回RDD内容的list，这个很耗内存，在测试环境中使用
+Take(n) 返回n条数据，返回的数据的顺序可能与你的语气不符
+Top
+TakeSample() 取样
+Foreach 对rdd中的每个元素使用给定的函数，那和map有啥子区别？
+
+
+
