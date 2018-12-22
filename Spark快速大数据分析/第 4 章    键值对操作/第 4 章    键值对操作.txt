@@ -1,0 +1,39 @@
+ETL
+Extract 抽取
+Transation 转化
+LOAD 加载
+
+pair RDD 键值对RDD
+
+ReduceByKey与ReduceL类似。它接受一个函数。该函数对值进行规约操作。
+注意：是值Value而不是键Key
+
+MapValues(func)
+对pair RDD的每个值应用函数func，而不改变去键
+留个悬念
+明天搞定
+
+
+CombineByKey 是说combine value by key
+我们对key pair最关心的还是它的value
+
+CombineByKey 分为三步
+1.	CreateCombiners
+创建键值对应的累加器的初始值，
+在算各个键的平均值的时候，这是个tuple
+2.	Mergevalue
+累加器对当前值和新值的合并
+这里操作的是累计器的值
+已算每个键值的平均值来说：
+每次传入的值还是（key，value）里边的value，他还是一个单独的数字，而不是一个tuple。
+第一步的累积器的声明，并没有概念最原始的数据的格式。
+我们这里的y是原始的值，而不是累加器里的tuples。
+但是这里的操作是累加器里的tuple，与原始值的累加操作。
+3.	MergeCombiners 
+把所有的累加器进行合并
+累加器本身就是tuple了，所有对累加器的操作就是对tuple的操作。
+
+http://abshinn.github.io/python/apache-spark/2014/10/11/using-combinebykey-in-apache-spark/
+
+
+
