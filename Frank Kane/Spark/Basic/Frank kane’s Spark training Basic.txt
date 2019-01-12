@@ -1,0 +1,42 @@
+Python Iterators Generators
+
+Frank kane’s Spark training 
+
+DAG engine
+Directed Acyclic Graph. 有向无环图。
+直到最后的操作行为时才开始真正的干活
+Transaction的行为不真正干活
+
+RDD Resilient Distributed Dataset
+
+我们pass的都是function
+Lambda 也是function
+自定义的 也是function
+不要把思维被lambda 限制住
+虽然我们的例子都是lambda
+可能是由于我们的例子太简单了
+
+Nothing actually happens in your driver program until an action is called.
+
+The most popular json packages
+https://pythontips.com/2018/06/03/top-14-most-famous-python-libraries-frameworks/ 
+https://pythontips.com/2013/07/30/20-python-libraries-you-cant-live-without/ 
+
+key/value pair RDD.
+If we just want to change the values.
+Please use mapVales and flatMapValues
+
+Filter takes a function that returns a Boolean.
+这个是新的发现
+看不同的人的视频，有不同人的理解
+返回true的结果被留下，返回false的结果被扔掉
+
+The result may need some sort
+https://www.pythoncentral.io/how-to-sort-a-list-tuple-or-object-with-sorted-in-python/
+
+Natural language processing toolkit
+https://www.nltk.org/
+
+
+
+
