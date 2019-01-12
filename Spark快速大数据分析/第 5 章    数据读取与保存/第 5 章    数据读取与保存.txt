@@ -1,0 +1,19 @@
+第 5 章    数据读取与保存
+
+Spark 支持多种数据源，一部分原因是SPark本身是基于Hadoop生态圈而构建，
+Spark 可以通过Hadoop MapReduce所使用的 InputFormat and OutputFormat接口访问数据，
+而大部分的文件系统和存储方式都支持这个接口。S3 HDFS Cassandra Hbase
+
+三种常见数据源
+1. 文件格式和文件系统
+	代表一切存储在本地或分布式文件系统中的数据：NFS， HDFS， Amazon S3
+2. Spark SQL中的 结构化数据源
+	介绍Spark SQL的一些操作，Json和Apache Hive，因为这俩似结构化数据。
+3. 数据库和键值存储
+	Cassandra，HBse，ElasticSearch，JDBC
+
+JSon 的数据是不是往往都不是一行一json
+excel csv 往往都是一行代表一个有用的数据
+结构化数据 vs 非结构化数据 
+
+
